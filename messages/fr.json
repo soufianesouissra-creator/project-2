@@ -51,6 +51,125 @@
   "underConstruction": {
     "note": "Page en construction — livrée dans une phase ultérieure."
   },
+  "realisationsPage": {
+    "display": "Ce que la centrale a livré, chantier par chantier.",
+    "intro": "Chaque fiche donne le client, les produits, le tonnage et la durée. [Les trois chantiers ci-dessous sont des gabarits à remplacer par des références réelles.]"
+  },
+  "realisationPage": {
+    "back": "Toutes les réalisations",
+    "placeholderNote": "Fiche gabarit — les données réelles du chantier remplaceront chaque valeur entre crochets."
+  },
+  "groupePage": {
+    "display": "Trois entités, une seule chaîne.",
+    "intro": "Le groupe ALEQ couvre la route de bout en bout : les carrières et les travaux, le transport, l'industrie des enrobés.",
+    "synergyTitle": "La chaîne du groupe",
+    "entities": {
+      "aleq": {
+        "name": "ALEQ",
+        "role": "Travaux routiers · VRD · AEP · assainissement · carrières",
+        "body": "L'entreprise de travaux du groupe : terrassements, chaussées, réseaux. Ses carrières alimentent la centrale en granulats."
+      },
+      "transpoleq": {
+        "name": "TRANSPOLEQ",
+        "role": "Transport & logistique",
+        "body": "La flotte du groupe : camions bâchés, suivi GPS en temps réel, rotation cadencée entre la centrale et les chantiers."
+      },
+      "factory": {
+        "name": "AleqFactory",
+        "role": "Industrie : enrobés",
+        "body": "La centrale d'enrobage : fabrication, contrôle laboratoire, livraison à température, mise en œuvre avec les équipes ALEQ."
+      }
+    },
+    "visit": "Visiter aleq.ma"
+  },
+  "carrieresPage": {
+    "display": "Travailler à la centrale.",
+    "intro": "Une centrale tourne avec peu de monde et beaucoup de rigueur : chaque poste compte.",
+    "openTitle": "Postes ouverts",
+    "emptyJobs": "Aucun poste ouvert aujourd'hui. Les candidatures spontanées sont lues et conservées six mois.",
+    "valuesTitle": "Ce qui se pratique ici",
+    "values": {
+      "v1": "La journée commence à 05:30 ; le planning de la veille est confirmé avant le premier chargement.",
+      "v2": "Les EPI ne se discutent pas, pour personne, visiteurs compris.",
+      "v3": "Un relevé se note au moment où il se fait — température, pesée, heure.",
+      "v4": "Celui qui détecte une anomalie arrête la chaîne ; personne ne le lui reproche."
+    },
+    "applyTitle": "Candidature spontanée"
+  },
+  "contactPage": {
+    "display": "Demander un devis.",
+    "directTitle": "Contacts directs",
+    "commercial": "Commercial",
+    "planning": "Planning",
+    "lab": "Laboratoire",
+    "toFill": "[à compléter]",
+    "hoursTitle": "Horaires",
+    "hoursBody": "La centrale ouvre à {time}. Les chargements du matin se réservent la veille auprès du planning.",
+    "accessTitle": "Accès",
+    "accessBody": "[Plan d'accès publié dès réception des coordonnées GPS de la centrale.]"
+  },
+  "quoteForm": {
+    "title": "Demande de devis",
+    "societe": "Société",
+    "contact": "Contact",
+    "phone": "Téléphone",
+    "email": "Email",
+    "product": "Produit",
+    "productNone": "— à définir avec vous —",
+    "quantity": "Quantité (t)",
+    "location": "Lieu de livraison",
+    "date": "Date souhaitée",
+    "laying": "Mise en œuvre par nos équipes",
+    "attachment": "Pièce jointe — optionnelle",
+    "attachmentHint": "PDF, DOC, DOCX, JPG, PNG · 10 Mo max",
+    "message": "Message",
+    "submit": "Envoyer la demande",
+    "sending": "Envoi…",
+    "success": "Demande envoyée. Une confirmation vous a été adressée par email.",
+    "errInvalid": "Vérifiez les champs signalés.",
+    "errRequired": "Champ obligatoire",
+    "errEmail": "Email invalide",
+    "errQuantity": "Quantité en tonnes, supérieure à zéro",
+    "errAttachmentSize": "Pièce jointe trop lourde (10 Mo max)",
+    "errAttachmentType": "Format non accepté (PDF, DOC, DOCX, JPG, PNG)",
+    "errUnconfigured": "L'envoi n'est pas encore raccordé à la messagerie. Utilisez les contacts directs ci-contre.",
+    "errServer": "Échec de l'envoi. Réessayez, ou utilisez les contacts directs.",
+    "errRate": "Trop de demandes successives. Réessayez dans quelques minutes."
+  },
+  "applicationForm": {
+    "name": "Nom et prénom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "role": "Poste visé",
+    "roleHint": "chef de centrale, opérateur, laborantin, régleur…",
+    "cv": "CV — PDF, 10 Mo max",
+    "message": "Message",
+    "submit": "Envoyer la candidature",
+    "success": "Candidature envoyée. Une confirmation vous a été adressée par email."
+  },
+  "legalPage": {
+    "title": "Mentions légales",
+    "editorTitle": "Éditeur",
+    "editorBody": "{name}, entité industrielle du groupe ALEQ. [Forme juridique et capital à compléter.] Siège : [adresse à compléter].",
+    "idsTitle": "Identifiants",
+    "hostTitle": "Hébergement",
+    "hostBody": "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis — vercel.com.",
+    "directorTitle": "Directeur de la publication",
+    "directorBody": "[À compléter.]"
+  },
+  "privacyPage": {
+    "title": "Politique de confidentialité",
+    "intro": "Cette politique décrit les traitements de données personnelles opérés par {name}, conformément à la loi 09-08 relative à la protection des personnes physiques à l'égard du traitement des données à caractère personnel et à ses textes d'application (CNDP).",
+    "purposesTitle": "Finalités",
+    "purposesBody": "Les données transmises via les formulaires (devis, candidature) servent uniquement à traiter votre demande : établissement d'un devis, prise de contact commerciale, examen d'une candidature. Aucune cession, aucune prospection tierce.",
+    "dataTitle": "Données collectées",
+    "dataBody": "Identité et coordonnées professionnelles, contenu du message, pièce jointe éventuelle. Le site n'utilise pas de cookies de suivi ; la mesure d'audience est anonyme et sans cookie.",
+    "retentionTitle": "Durées de conservation",
+    "retentionBody": "Demandes de devis : durée de la relation commerciale, puis archivage légal. Candidatures : six mois après réception, sauf accord pour prolongation.",
+    "rightsTitle": "Vos droits",
+    "rightsBody": "Vous disposez des droits d'accès, de rectification et d'opposition prévus par la loi 09-08. Pour les exercer : {email}. Le traitement fait l'objet des formalités requises auprès de la CNDP. [Récépissé à compléter.]",
+    "contactTitle": "Contact"
+  },
   "centralePage": {
     "display": "Une tour, cinq prédoseurs, [160] tonnes par heure.",
     "intro": "Centrale discontinue : chaque gâchée est dosée par pesée, granulats, filler et bitume, puis malaxée et pesée en sortie. Le pont-bascule édite un bon numéroté par chargement.",

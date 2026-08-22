@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { Fragment } from "react";
 
 export type ChainStop = { name: string; entity: string; fact: string };
@@ -7,9 +8,20 @@ export type ChainStop = { name: string; entity: string; fact: string };
  * entity and one mono fact per stop. No icons, no numbering — it is a chain
  * and it looks like the other chain (DESIGN.md §7).
  */
-export function IntegratedChain({ stops }: { stops: ChainStop[] }) {
+export function IntegratedChain({
+  stops,
+  cols = 4,
+}: {
+  stops: ChainStop[];
+  cols?: 3 | 4;
+}) {
   return (
-    <ol className="grid gap-y-8 md:grid-cols-[repeat(4,1fr)] md:gap-y-0">
+    <ol
+      className={clsx(
+        "grid gap-y-8 md:gap-y-0",
+        cols === 4 ? "md:grid-cols-4" : "md:grid-cols-3",
+      )}
+    >
       {stops.map((stop, i) => (
         <Fragment key={stop.name}>
           <li className="relative md:pe-6">
@@ -22,9 +34,11 @@ export function IntegratedChain({ stops }: { stops: ChainStop[] }) {
             </div>
             <p className="display-wide text-28">{stop.name}</p>
             <p className="mt-1 text-14 opacity-70">{stop.entity}</p>
-            <p className="tnum mt-2 font-mono text-12 uppercase tracking-[0.08em] text-acier">
-              {stop.fact}
-            </p>
+            {stop.fact && (
+              <p className="tnum mt-2 font-mono text-12 uppercase tracking-[0.08em] text-acier">
+                {stop.fact}
+              </p>
+            )}
           </li>
         </Fragment>
       ))}

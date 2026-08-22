@@ -51,6 +51,125 @@
   "underConstruction": {
     "note": "Page under construction — delivered in a later phase."
   },
+  "realisationsPage": {
+    "display": "What the plant has delivered, site by site.",
+    "intro": "Each sheet gives the client, products, tonnage and duration. [The three projects below are templates to replace with real references.]"
+  },
+  "realisationPage": {
+    "back": "All projects",
+    "placeholderNote": "Template sheet — real project data will replace every bracketed value."
+  },
+  "groupePage": {
+    "display": "Three entities, one chain.",
+    "intro": "The ALEQ group covers the road end to end: quarries and works, transport, asphalt production.",
+    "synergyTitle": "The group's chain",
+    "entities": {
+      "aleq": {
+        "name": "ALEQ",
+        "role": "Road works · utilities · water · sewerage · quarries",
+        "body": "The group's works company: earthworks, pavements, networks. Its quarries feed the plant with aggregates."
+      },
+      "transpoleq": {
+        "name": "TRANSPOLEQ",
+        "role": "Transport & logistics",
+        "body": "The group's fleet: sheeted trucks, real-time GPS tracking, timed rotation between plant and sites."
+      },
+      "factory": {
+        "name": "AleqFactory",
+        "role": "Industry: asphalt",
+        "body": "The asphalt plant: production, lab control, delivery at temperature, paving with ALEQ crews."
+      }
+    },
+    "visit": "Visit aleq.ma"
+  },
+  "carrieresPage": {
+    "display": "Working at the plant.",
+    "intro": "A plant runs with few people and much rigour: every position counts.",
+    "openTitle": "Open roles",
+    "emptyJobs": "No open roles today. Spontaneous applications are read and kept for six months.",
+    "valuesTitle": "How things are done here",
+    "values": {
+      "v1": "The day starts at 05:30; yesterday's planning is confirmed before the first loading.",
+      "v2": "PPE is not negotiable, for anyone, visitors included.",
+      "v3": "A reading is written down the moment it is taken — temperature, weight, time.",
+      "v4": "Whoever spots an anomaly stops the line; nobody blames them for it."
+    },
+    "applyTitle": "Spontaneous application"
+  },
+  "contactPage": {
+    "display": "Request a quote.",
+    "directTitle": "Direct contacts",
+    "commercial": "Sales",
+    "planning": "Planning",
+    "lab": "Laboratory",
+    "toFill": "[to fill]",
+    "hoursTitle": "Hours",
+    "hoursBody": "The plant opens at {time}. Morning loadings are booked the day before with the planning desk.",
+    "accessTitle": "Access",
+    "accessBody": "[Access map published once the plant's GPS coordinates are provided.]"
+  },
+  "quoteForm": {
+    "title": "Quote request",
+    "societe": "Company",
+    "contact": "Contact",
+    "phone": "Phone",
+    "email": "Email",
+    "product": "Product",
+    "productNone": "— to define with you —",
+    "quantity": "Quantity (t)",
+    "location": "Delivery location",
+    "date": "Requested date",
+    "laying": "Paving by our crews",
+    "attachment": "Attachment — optional",
+    "attachmentHint": "PDF, DOC, DOCX, JPG, PNG · 10 MB max",
+    "message": "Message",
+    "submit": "Send the request",
+    "sending": "Sending…",
+    "success": "Request sent. A confirmation has been emailed to you.",
+    "errInvalid": "Check the highlighted fields.",
+    "errRequired": "Required field",
+    "errEmail": "Invalid email",
+    "errQuantity": "Quantity in tonnes, above zero",
+    "errAttachmentSize": "Attachment too large (10 MB max)",
+    "errAttachmentType": "Format not accepted (PDF, DOC, DOCX, JPG, PNG)",
+    "errUnconfigured": "Sending is not yet wired to the mailbox. Use the direct contacts opposite.",
+    "errServer": "Sending failed. Try again, or use the direct contacts.",
+    "errRate": "Too many successive requests. Try again in a few minutes."
+  },
+  "applicationForm": {
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "role": "Target role",
+    "roleHint": "plant manager, operator, lab technician, screed operator…",
+    "cv": "CV — PDF, 10 MB max",
+    "message": "Message",
+    "submit": "Send the application",
+    "success": "Application sent. A confirmation has been emailed to you."
+  },
+  "legalPage": {
+    "title": "Legal notice",
+    "editorTitle": "Publisher",
+    "editorBody": "{name}, industrial entity of the ALEQ group. [Legal form and capital to fill.] Registered office: [address to fill].",
+    "idsTitle": "Identifiers",
+    "hostTitle": "Hosting",
+    "hostBody": "Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA — vercel.com.",
+    "directorTitle": "Publication director",
+    "directorBody": "[To fill.]"
+  },
+  "privacyPage": {
+    "title": "Privacy policy",
+    "intro": "This policy describes the personal-data processing carried out by {name}, in accordance with Moroccan law 09-08 on the protection of individuals with regard to personal-data processing and its implementing texts (CNDP).",
+    "purposesTitle": "Purposes",
+    "purposesBody": "Data submitted through the forms (quote, application) is used solely to handle your request: preparing a quote, commercial contact, reviewing an application. No transfer, no third-party prospecting.",
+    "dataTitle": "Data collected",
+    "dataBody": "Identity and professional contact details, message content, optional attachment. The site uses no tracking cookies; audience measurement is anonymous and cookieless.",
+    "retentionTitle": "Retention",
+    "retentionBody": "Quote requests: duration of the commercial relationship, then legal archiving. Applications: six months after receipt, unless you agree to an extension.",
+    "rightsTitle": "Your rights",
+    "rightsBody": "You have the rights of access, rectification and objection provided by law 09-08. To exercise them: {email}. The processing is subject to the required CNDP formalities. [Receipt number to fill.]",
+    "contactTitle": "Contact"
+  },
   "centralePage": {
     "display": "One tower, five cold feeders, [160] tonnes per hour.",
     "intro": "Batch plant: every batch is dosed by weight — aggregates, filler, bitumen — then mixed and weighed out. The weighbridge prints a numbered ticket per load.",
