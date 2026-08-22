@@ -1,6 +1,7 @@
 # AleqFactory — Phase 0 Design Plan
 
-Status: **awaiting approval — no application code has been written.**
+Status: **approved (22/08/2026) and implemented through Phase 5.** Kept as the design reference;
+deviations decided during the build are listed in TODO.md.
 Every value in brackets `[...]` is a default from the master prompt or an assumption; the full
 list lives in `TODO.md`.
 
