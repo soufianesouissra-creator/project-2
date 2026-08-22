@@ -51,6 +51,126 @@
   "underConstruction": {
     "note": "Page under construction — delivered in a later phase."
   },
+  "centralePage": {
+    "display": "One tower, five cold feeders, [160] tonnes per hour.",
+    "intro": "Batch plant: every batch is dosed by weight — aggregates, filler, bitumen — then mixed and weighed out. The weighbridge prints a numbered ticket per load.",
+    "specTitle": "Data sheet",
+    "spec": {
+      "type": "Plant type",
+      "capacity": "Nominal capacity",
+      "hotStorage": "Hot storage",
+      "bitumen": "Bitumen",
+      "coldFeed": "Cold feeders",
+      "radius": "Delivery radius",
+      "control": "External control",
+      "opensAt": "Opens"
+    },
+    "equipTitle": "Equipment",
+    "controlRoomTitle": "Control room",
+    "controlRoomBody": "Dosing, temperatures and weighing are run and logged from the control room. Every batch leaves a record: recipe, weights, temperature, timestamp.",
+    "timelineTitle": "Milestones",
+    "teamTitle": "The plant's trades",
+    "certifTitle": "Certifications",
+    "certifBody": "ISO 9001: certification in progress. [Status to verify before publication.]",
+    "galleryTitle": "The plant in pictures"
+  },
+  "produitsPage": {
+    "display": "Every pavement layer has its mix.",
+    "intro": "Mixes designed in the lab to the NM EN 13108 series. Values in brackets remain to be confirmed with the plant."
+  },
+  "produitPage": {
+    "specTitle": "Specifications",
+    "spec": {
+      "norm": "Standard",
+      "granularity": "Grading",
+      "classes": "Class",
+      "binder": "Binder",
+      "tempManufacture": "Production temp.",
+      "tempLaying": "Laying temp.",
+      "thickness": "Usual thickness"
+    },
+    "strengths": "Strengths",
+    "tempBand": {
+      "fab": "Production",
+      "delivery": "Delivery",
+      "laying": "Laying"
+    },
+    "datasheet": "Data sheet",
+    "pdfPending": "PDF to come",
+    "related": "Other mixes — {layer}",
+    "backAll": "All mix designs"
+  },
+  "servicesPage": {
+    "display": "Logistics is part of the product.",
+    "intro": "A compliant mix that arrives cold is a lost mix. Delivery, paving and testing are part of what the plant sells.",
+    "estimator": {
+      "eyebrow": "Tool",
+      "title": "Delivery estimator",
+      "quantity": "Quantity (t)",
+      "trucks": "Trucks",
+      "trucksNote": "{payload} t per truck",
+      "production": "Production time",
+      "productionNote": "at {capacity} t/h",
+      "window": "Indicative window",
+      "windowDays": "{days, plural, one {# production day} other {# production days}}",
+      "footnote": "Indicative estimate, confirmed by the planning desk."
+    }
+  },
+  "qualitePage": {
+    "display": "A compliant mix is a measured mix.",
+    "intro": "Every mix is designed before the first tonne; every delivered lot is tested. Tests follow the NM EN 12697 series.",
+    "testsTitle": "Tests",
+    "testName": "Test",
+    "testNorm": "Standard",
+    "testFreq": "Frequency",
+    "equipTitle": "Laboratory equipment",
+    "processTitle": "Process controls",
+    "process": {
+      "temp": {
+        "title": "Temperature",
+        "body": "Recorded at production, at loading and at delivery. A tonne out of range does not leave."
+      },
+      "pesee": {
+        "title": "Weighing",
+        "body": "Dosing by weight at every batch; weighbridge on exit, numbered ticket per load."
+      },
+      "trace": {
+        "title": "Traceability",
+        "body": "Recipe, weights, temperatures and timestamps archived per batch and per delivery note."
+      }
+    },
+    "externalTitle": "External control",
+    "externalBody": "Cross-testing with {org}. [Frequency and scope to specify.]",
+    "isoTitle": "ISO 9001",
+    "isoBody": "Certification in progress. [Status to verify before publication.]",
+    "downloadsTitle": "Downloads"
+  },
+  "envPage": {
+    "display": "Filtered, measured, documented.",
+    "intro": "A clean plant is proven with equipment and records, not adjectives.",
+    "items": {
+      "filtre": {
+        "title": "Baghouse filter",
+        "body": "Dryer-drum fumes pass through a baghouse filter; captured fines are re-injected as filler. [Emission values to publish once measured.]"
+      },
+      "rap": {
+        "title": "Reclaimed asphalt (RAP)",
+        "body": "[Incorporation rate to confirm.] Recycled millings replace virgin aggregate and part of the binder."
+      },
+      "tiedes": {
+        "title": "Warm-mix asphalt",
+        "body": "Production lowered by about 30 °C: less fuel at the drum, less CO₂, same lab-validated performance."
+      },
+      "eau": {
+        "title": "Water and noise",
+        "body": "[Provisions to document: sealed areas, water management, boundary noise measurements.]"
+      },
+      "hse": {
+        "title": "Site safety",
+        "body": "Mandatory PPE, posted traffic plan, one-way truck flow, site speed limit."
+      }
+    }
+  },
   "productCard": {
     "norm": "Standard",
     "layer": "Layer",

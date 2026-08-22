@@ -51,6 +51,126 @@
   "underConstruction": {
     "note": "Page en construction — livrée dans une phase ultérieure."
   },
+  "centralePage": {
+    "display": "Une tour, cinq prédoseurs, [160] tonnes par heure.",
+    "intro": "Centrale discontinue : chaque gâchée est dosée par pesée, granulats, filler et bitume, puis malaxée et pesée en sortie. Le pont-bascule édite un bon numéroté par chargement.",
+    "specTitle": "Fiche technique",
+    "spec": {
+      "type": "Type de centrale",
+      "capacity": "Capacité nominale",
+      "hotStorage": "Stockage à chaud",
+      "bitumen": "Bitume",
+      "coldFeed": "Prédoseurs",
+      "radius": "Rayon de livraison",
+      "control": "Contrôle externe",
+      "opensAt": "Ouverture"
+    },
+    "equipTitle": "Équipements",
+    "controlRoomTitle": "Cabine de commande",
+    "controlRoomBody": "Dosages, températures et pesées sont conduits et enregistrés depuis la cabine. Chaque gâchée laisse une trace : recette, poids, température, horodatage.",
+    "timelineTitle": "Repères",
+    "teamTitle": "Les métiers de la centrale",
+    "certifTitle": "Certifications",
+    "certifBody": "ISO 9001 : démarche en cours. [Statut à vérifier avant publication.]",
+    "galleryTitle": "La centrale en images"
+  },
+  "produitsPage": {
+    "display": "Chaque couche de chaussée a sa formulation.",
+    "intro": "Formulations étudiées au laboratoire et conformes à la série NM EN 13108. Les valeurs entre crochets restent à confirmer avec la centrale."
+  },
+  "produitPage": {
+    "specTitle": "Caractéristiques",
+    "spec": {
+      "norm": "Norme",
+      "granularity": "Granularité",
+      "classes": "Classe",
+      "binder": "Liant",
+      "tempManufacture": "T° fabrication",
+      "tempLaying": "T° mise en œuvre",
+      "thickness": "Épaisseurs usuelles"
+    },
+    "strengths": "Points forts",
+    "tempBand": {
+      "fab": "Fabrication",
+      "delivery": "Livraison",
+      "laying": "Mise en œuvre"
+    },
+    "datasheet": "Fiche technique",
+    "pdfPending": "PDF à venir",
+    "related": "Autres formulations — {layer}",
+    "backAll": "Toutes les formulations"
+  },
+  "servicesPage": {
+    "display": "La logistique fait partie du produit.",
+    "intro": "Un enrobé conforme qui arrive froid est un enrobé perdu. La livraison, la mise en œuvre et le contrôle font partie de ce que la centrale vend.",
+    "estimator": {
+      "eyebrow": "Outil",
+      "title": "Estimateur de livraison",
+      "quantity": "Quantité (t)",
+      "trucks": "Camions",
+      "trucksNote": "{payload} t par camion",
+      "production": "Temps de fabrication",
+      "productionNote": "à {capacity} t/h",
+      "window": "Fenêtre indicative",
+      "windowDays": "{days, plural, one {# journée de production} other {# journées de production}}",
+      "footnote": "Estimation indicative, confirmée par le planning."
+    }
+  },
+  "qualitePage": {
+    "display": "Un enrobé conforme est un enrobé mesuré.",
+    "intro": "Chaque formulation est étudiée avant la première tonne ; chaque lot livré est contrôlé. Les essais suivent la série NM EN 12697.",
+    "testsTitle": "Essais",
+    "testName": "Essai",
+    "testNorm": "Norme",
+    "testFreq": "Fréquence",
+    "equipTitle": "Matériel du laboratoire",
+    "processTitle": "Contrôles process",
+    "process": {
+      "temp": {
+        "title": "Température",
+        "body": "Relevée en fabrication, au chargement et à la livraison. Une tonne hors plage ne part pas."
+      },
+      "pesee": {
+        "title": "Pesée",
+        "body": "Dosage par pesée à chaque gâchée ; pont-bascule en sortie, bon numéroté par chargement."
+      },
+      "trace": {
+        "title": "Traçabilité",
+        "body": "Recette, poids, températures et horodatage archivés par gâchée et par bon de livraison."
+      }
+    },
+    "externalTitle": "Contrôle externe",
+    "externalBody": "Essais croisés avec {org}. [Fréquence et portée à préciser.]",
+    "isoTitle": "ISO 9001",
+    "isoBody": "Démarche de certification en cours. [Statut à vérifier avant publication.]",
+    "downloadsTitle": "Téléchargements"
+  },
+  "envPage": {
+    "display": "Filtré, mesuré, documenté.",
+    "intro": "Une centrale propre se prouve avec du matériel et des relevés, pas avec des adjectifs.",
+    "items": {
+      "filtre": {
+        "title": "Filtre à manches",
+        "body": "Les fumées du tambour sécheur passent par un filtre à manches ; les fines captées sont réinjectées comme filler. [Valeurs d'émission à publier après mesure.]"
+      },
+      "rap": {
+        "title": "Agrégats d'enrobés (RAP)",
+        "body": "[Taux d'incorporation à confirmer.] Le fraisât recyclé remplace granulats neufs et une part du liant."
+      },
+      "tiedes": {
+        "title": "Enrobés tièdes",
+        "body": "Fabrication abaissée d'environ 30 °C : moins de combustible au tambour, moins de CO₂, mêmes performances validées en laboratoire."
+      },
+      "eau": {
+        "title": "Eau et bruit",
+        "body": "[Dispositions à documenter : aires étanches, gestion des eaux, mesures de bruit en limite de site.]"
+      },
+      "hse": {
+        "title": "Sécurité sur site",
+        "body": "EPI obligatoires, plan de circulation affiché, sens unique poids lourds, vitesse limitée sur le site."
+      }
+    }
+  },
   "productCard": {
     "norm": "Norme",
     "layer": "Couche",
