@@ -12,6 +12,22 @@ import { cn } from '@/lib/cn'
 const SCROLL_THRESHOLD = 80
 
 /**
+ * Pages dont la première section est une bande `--asphalt`.
+ *
+ * L'en-tête est rendu par le layout, pas par la page : il n'a donc aucun moyen
+ * de savoir sur quoi il est posé. Sans cette liste, la navigation s'affiche en
+ * `--ink` sur de l'enrobé — c'est-à-dire invisible.
+ *
+ * Une page qui ouvre sur une bande sombre s'ajoute ici. Le styleguide en fait
+ * partie : son en-tête de page est une bande d'enrobé.
+ */
+const DARK_HERO_ROUTES: readonly string[] = ['/', '/styleguide', '/suivi']
+
+function opensOnDarkBand(pathname: string): boolean {
+  return DARK_HERO_ROUTES.includes(pathname)
+}
+
+/**
  * En-tête collant.
  *
  * Transparent au sommet, il devient une bande `--asphalt` après 80 px — une
@@ -27,6 +43,7 @@ export function Header({ overHero = false }: { readonly overHero?: boolean }) {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
+  const onDarkBand = overHero || opensOnDarkBand(pathname)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -54,7 +71,7 @@ export function Header({ overHero = false }: { readonly overHero?: boolean }) {
     }
   }, [menuOpen])
 
-  const dark = scrolled || menuOpen || overHero
+  const dark = scrolled || menuOpen || onDarkBand
 
   return (
     <header
@@ -106,9 +123,15 @@ export function Header({ overHero = false }: { readonly overHero?: boolean }) {
             {CONTACT.phone}
           </a>
 
-          <ButtonLink href="/devis" size="sm" className="hidden sm:inline-flex">
-            {t('common.requestQuote')}
-          </ButtonLink>
+          {/* Enveloppé plutôt que masqué par une classe sur le bouton :
+              `hidden` et le `inline-flex` de la variante sont deux utilitaires
+              d'affichage, et c'est l'ordre de la feuille de style qui tranche,
+              pas l'ordre des classes. Le bouton restait visible à 390 px. */}
+          <span className="hidden sm:block">
+            <ButtonLink href="/devis" size="sm">
+              {t('common.requestQuote')}
+            </ButtonLink>
+          </span>
 
           <button
             type="button"

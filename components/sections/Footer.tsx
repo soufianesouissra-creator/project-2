@@ -3,7 +3,6 @@ import { Link } from '@/lib/navigation'
 import { CONTACT, FOOTER_NAV, GROUP_ENTITIES, LEGAL, LEGAL_NAV } from '@/content/fr/site'
 import { IconPhone, IconWhatsapp } from '@/components/icons'
 import { LOCALE_META, PLANNED_LOCALES, routing } from '@/lib/routing'
-import { Wordmark } from './Wordmark'
 
 /**
  * Pied de page — dernière bande `--asphalt` de la page.
@@ -100,11 +99,6 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-gravel border-t">
-        <div className="site-container py-4">
-          <Wordmark onDark />
-        </div>
-      </div>
     </footer>
   )
 }

@@ -52,12 +52,14 @@ export function SilhouetteRigidTipper() {
   return (
     <Silhouette title="Camion benne 8x4">
       <Cab />
-      <path d="M44 48 V22 H182 V48 Z" />
-      <path d="M6 48 H182" />
+      {/* Porteur : caisse courte et essieux resserrés. Dessinée aussi longue
+          qu'une semi-remorque, la silhouette perdait ce qui la distingue. */}
+      <path d="M44 48 V22 L52 16 H146 V48 Z" />
+      <path d="M6 48 H146" />
       <Wheel cx={22} />
       <Wheel cx={40} />
-      <Wheel cx={140} />
-      <Wheel cx={162} />
+      <Wheel cx={104} />
+      <Wheel cx={126} />
     </Silhouette>
   )
 }
@@ -103,9 +105,9 @@ export function SilhouetteLowbed() {
     <Silhouette title="Porte-engins col de cygne">
       <Cab />
       <path d="M6 48 H44" />
-      <path d="M44 34 H70 L80 48 H152 L162 36 H194" />
-      <path d="M194 36 V48 H162" />
-      <path d="M194 40 L200 46" />
+      <path d="M44 30 H72 L82 44 H150 L160 32 H194 V44 H160" />
+      <path d="M82 48 H150 V44 M82 44 V48" />
+      <path d="M194 34 L200 42" />
       <Wheel cx={20} />
       <Wheel cx={40} />
       <Wheel cx={168} />

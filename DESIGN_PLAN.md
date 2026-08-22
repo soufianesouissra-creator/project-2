@@ -115,22 +115,25 @@ IBM Plex Mono 13–14 px, en-têtes `--mist` en capitales.
 
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│ DISPATCH — 22/08                                  ● EN LIGNE │  ← puce --marking, 1 px
+│ DISPATCH                                          ▪ EN LIGNE │  ← puce --marking
 ├─────┬─────────┬───────────────────────┬──────────┬──────┬────┤
-│ N°  │ CAMION  │ TRAJET                │ MATÉRIAU │ TONN.│ ST │  ← --mist, 11 px, capitales
+│ N°  │ CAMION  │ TRAJET                │ MATÉRIAU │ TONN.│ ST │  ← --mist, 12 px, capitales
 ├─────┼─────────┼───────────────────────┼──────────┼──────┼────┤
 │M-2308│ TPQ-014│ Carrière [X] → Ch.[Y] │ GNT 0/31,5│ 27,4 t│▭ En route     │
 │M-2309│ TPQ-007│ Centrale → Ch. [Z]    │ EB 0/10   │ 26,1 t│▭ En chargement│
 │  … 6 à 8 lignes …                                                        │
 ├──────────────────────────────────────────────────────────────┤
-│ Données illustratives                                        │  ← --mist, 11 px
+│ Données illustratives                                        │  ← --mist, 12 px
 └──────────────────────────────────────────────────────────────┘
 ```
 
 - **Statuts :** contour `--marking` = actif (`En chargement`, `En route`) · `--mist` = terminé
   (`Livré 14:32`). Jamais de vert/rouge : ce n'est pas un feu tricolore, c'est un tableau de service.
-- **Vie :** toutes les ~6 s, un statut avance d'un cran, une ligne sort par le haut, une entre par le bas.
-  Transition 240 ms, translation de la hauteur d'une ligne. Rien d'autre ne bouge sur la page.
+- **Vie :** toutes les ~6 s, un statut avance d'un cran, une mission entre EN TÊTE (c'est la plus
+  récente) et la plus ancienne quitte le bas du panneau. Rien d'autre ne bouge sur la page.
+- **Largeur :** le board répond à la largeur de son CONTENEUR, pas de la fenêtre. Étroit (colonne du
+  hero, ~540 px), il replie camion et matériau dans la colonne trajet plutôt que de laisser le
+  statut sortir du cadre.
 - **Séquence d'arrivée** (le seul moment orchestré du site) : les lignes s'allument une par une
   (décalage 120 ms) → les mots du H1 → fondu de la vidéo → les chiffres clés comptent.
 - **Dégradations :** `prefers-reduced-motion` ou `navigator.connection.saveData` → tout est statique,
@@ -237,7 +240,7 @@ Il encode « route » sans jamais l'écrire. Animé, il se dessine dans le sens 
 │ ▌TRANSPOLEQ      ☎   ☰   │  header 56 px
 ├──────────────────────────┤
 │▓ BANDE --asphalt ▓▓▓▓▓▓▓▓│
-│ TRANSPORT & LOG. ·       │  eyebrow 11 px
+│ TRANSPORT & LOG. ·       │  eyebrow 12 px
 │ GROUPE ALEQ              │
 │                          │
 │ Du gisement au           │  clamp() → ~34 px

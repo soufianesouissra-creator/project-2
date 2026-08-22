@@ -207,7 +207,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
           </div>
           <div>
             <p className="text-mist mb-3 font-mono text-xs">Statique (CSS, sans JavaScript)</p>
-            <span className="marking-line-x block" />
+            <span className="marking-line-x block w-full" />
           </div>
           <div className="flex items-stretch gap-6">
             <span className="marking-line-y h-24 shrink-0" />
@@ -225,7 +225,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
         title="Tableau de dispatch"
         note="L’élément signature. Premier objet lisible de la page d’accueil : la thèse du site est qu’on peut montrer chaque tonne en mouvement, alors on la montre avant de l’écrire."
       >
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-[1fr_minmax(0,34rem)]">
           <div>
             <p className="text-mist mb-3 font-mono text-xs">
               live — un statut avance toutes les 6 s, une mission entre, la plus ancienne sort
@@ -234,15 +234,18 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
           </div>
           <div>
             <p className="text-mist mb-3 font-mono text-xs">
-              statique — rendu identique sous mouvement réduit ou mode économiseur de données
+              largeur du hero (~540 px), statique — camion et matériau se replient dans la colonne
+              trajet plutôt que de sortir du panneau
             </p>
             <DispatchBoard rows={DEMO_ROWS} />
           </div>
         </div>
         <p className="text-mist mt-4 max-w-[68ch] font-mono text-xs">
-          La mention « Données illustratives » fait partie du composant : on ne peut pas afficher le
-          board sans elle. Les lignes sont une donnée typée (DispatchRow), pas du JSX — la Phase 3
-          branchera un flux anonymisé sans toucher au composant.
+          Le board répond à la largeur de son CONTENEUR, pas à celle de la fenêtre : les deux
+          panneaux ci-dessus sont le même composant, à la même taille d’écran. La mention « Données
+          illustratives » fait partie du composant : on ne peut pas afficher le board sans elle. Les
+          lignes sont une donnée typée (DispatchRow), pas du JSX — la Phase 3 branchera un flux
+          anonymisé sans toucher au composant.
         </p>
       </Section>
 
@@ -534,7 +537,7 @@ function Section({
 }) {
   return (
     <section id={id} className="site-container scroll-mt-24 py-16 lg:py-24">
-      <span aria-hidden className="marking-line-x mb-10 block" />
+      <span aria-hidden className="marking-line-x mb-10 block w-full" />
       <h2 className="font-display font-semicondensed text-ink text-3xl font-semibold">{title}</h2>
       <p className="text-ink/70 mt-3 mb-10 max-w-[68ch]">{note}</p>
       {children}

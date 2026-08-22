@@ -108,3 +108,56 @@ Si le vrai accueil dépasse le budget, deux leviers dans cet ordre : `LazyMotion
 pour ne charger que les fonctionnalités utilisées, puis bascule de `Reveal` et `MarkingLine` en CSS
 pur (les deux animations sont assez simples pour s'en passer). À trancher sur mesure, pas par
 anticipation.
+
+---
+
+## Pièges vérifiés pendant la Phase 0
+
+Chacun vient d'un défaut RÉEL trouvé en regardant les captures à 390 px et 1440 px, pas d'une
+relecture de code. Ils sont ici parce qu'ils se reproduisent tout seuls.
+
+### `cn()` concatène, il n'arbitre pas — `hidden` perdait contre `inline-flex`
+
+`<ButtonLink className="hidden sm:inline-flex">` laissait le CTA visible à 390 px. `hidden` et le
+`inline-flex` de la variante sont deux utilitaires d'affichage : c'est l'ordre de la FEUILLE DE
+STYLE qui tranche, pas l'ordre des classes. Pour masquer un composant, on enveloppe l'appel
+(`<span class="hidden sm:block">`), on ne lui passe pas la classe. Noté dans `lib/cn.ts`.
+
+### Un utilitaire qui impose sa taille se bat avec les utilitaires de taille
+
+`marking-line-x` déclarait `inline-size: 100%`. Dans la rangée du groupe au pied de page, il gagnait
+contre `w-6` et **barrait le nom qu'il devait séparer** — « AleqFactory » s'affichait rayé.
+L'utilitaire ne fixe plus que l'épaisseur ; la longueur revient à l'appelant.
+
+### Un en-tête rendu par le layout ne sait pas sur quoi il est posé
+
+L'accueil ouvre sur une bande `--asphalt`, l'en-tête est rendu par le layout : sa navigation
+s'affichait en `--ink` sur de l'enrobé, c'est-à-dire invisible. Une page qui ouvre sur une bande
+sombre est maintenant déclarée dans `DARK_HERO_ROUTES`.
+
+### Points de rupture de FENÊTRE dans un composant de largeur variable
+
+Le board vit dans une colonne étroite du hero (~540 px) autant qu'en pleine largeur. Calé sur la
+fenêtre, il affichait six colonnes dans un panneau qui n'en tient que quatre : la colonne **Statut**
+— la seule qui dit ce qui se passe — sortait du cadre, sans barre de défilement visible. Il est
+passé en **requêtes de conteneur** (`@container`), et le styleguide montre les deux largeurs côte à
+côte pour que la régression se voie.
+
+### Un `not-found.tsx` de segment ne sert à rien sans layout racine RÉEL
+
+`app/[locale]/not-found.tsx` n'était jamais rendu — pas même sur un `notFound()` levé depuis une
+vraie page. Sans `app/layout.tsx`, Next en synthétise un, et c'est ce layout fantôme qui possède la
+frontière 404 : le site répondait le 404 par défaut de Next, en anglais, sans styles, alors que la
+page française existait et compilait. Il faut trois pièces ensemble :
+`app/layout.tsx` (passe-plat), `app/[locale]/[...rest]/page.tsx` (qui appelle `setRequestLocale`
+puis `notFound()`), et `app/not-found.tsx` pour ce qui n'atteint aucune langue.
+
+**Une intention non vérifiée à l'écran n'est pas un résultat.** Les cinq défauts ci-dessus
+compilaient, passaient le typecheck et le lint.
+
+### 2026-08-22 · Une capture d'écran se prend sur un serveur relancé
+
+Deux séries de captures ont été prises contre un serveur `next start` démarré AVANT un `pnpm build`.
+Le serveur servait un HTML référençant des feuilles de style d'une compilation disparue : pages sans
+styles et exception côté client, sur un code parfaitement sain. `scripts/screenshots.mjs` exige un
+serveur relancé après la compilation.

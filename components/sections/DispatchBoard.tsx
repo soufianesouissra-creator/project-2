@@ -93,11 +93,16 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
   }, [animated, incoming, cursor])
 
   return (
+    /* Requêtes de CONTENEUR, pas de fenêtre. Le board vit dans une colonne
+       étroite du hero (~540 px) autant qu'en pleine largeur : des points de
+       rupture calés sur la fenêtre lui feraient afficher six colonnes dans un
+       panneau qui n'en tient que quatre, et le statut — la seule colonne qui
+       dit ce qui se passe — sortirait du cadre. */
     <section
-      className={cn('bg-asphalt text-concrete border-gravel border', className)}
+      className={cn('bg-asphalt text-concrete border-gravel @container border', className)}
       aria-label="Tableau de dispatch, données illustratives"
     >
-      <header className="border-gravel flex items-center justify-between border-b px-4 py-3">
+      <header className="border-gravel flex items-center justify-between border-b px-3 py-3">
         <span className="eyebrow text-concrete">Dispatch</span>
         {animated ? (
           <span className="eyebrow text-mist flex items-center gap-2">
@@ -114,22 +119,22 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
           </caption>
           <thead>
             <tr className="text-mist eyebrow">
-              <th scope="col" className="px-4 py-2 text-start font-normal">
+              <th scope="col" className="px-3 py-2 text-start font-normal">
                 N°
               </th>
-              <th scope="col" className="hidden px-4 py-2 text-start font-normal sm:table-cell">
+              <th scope="col" className="hidden px-3 py-2 text-start font-normal @xl:table-cell">
                 Camion
               </th>
-              <th scope="col" className="px-4 py-2 text-start font-normal">
+              <th scope="col" className="w-full px-3 py-2 text-start font-normal">
                 Trajet
               </th>
-              <th scope="col" className="hidden px-4 py-2 text-start font-normal lg:table-cell">
+              <th scope="col" className="hidden px-3 py-2 text-start font-normal @3xl:table-cell">
                 Matériau
               </th>
-              <th scope="col" className="px-4 py-2 text-end font-normal">
+              <th scope="col" className="px-3 py-2 text-end font-normal whitespace-nowrap">
                 Tonnage
               </th>
-              <th scope="col" className="px-4 py-2 text-start font-normal">
+              <th scope="col" className="px-3 py-2 text-start font-normal whitespace-nowrap">
                 Statut
               </th>
             </tr>
@@ -143,29 +148,35 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
                   index < poweredRows ? 'opacity-100' : 'opacity-0',
                 )}
               >
-                <td className="text-concrete px-4 py-2.5 whitespace-nowrap">{row.id}</td>
-                <td className="text-mist hidden px-4 py-2.5 whitespace-nowrap sm:table-cell">
+                <td className="text-concrete px-3 py-2.5 whitespace-nowrap">{row.id}</td>
+                <td className="text-mist hidden px-3 py-2.5 whitespace-nowrap @xl:table-cell">
                   {row.truck}
                 </td>
-                <td className="px-4 py-2.5">
-                  <span className="text-concrete">
-                    {row.from} <span className="text-mist">→</span> {row.to}
+                {/* Origine et destination sur deux lignes, comme sur un vrai
+                    tableau de service. Sur une seule ligne, un nom de chantier
+                    un peu long fait passer la flèche à la ligne et chaque
+                    rangée prend une hauteur différente — le panneau perd la
+                    densité qui fait tout son intérêt. */}
+                <td className="px-3 py-2.5">
+                  <span className="text-concrete block truncate">{row.from}</span>
+                  <span className="text-concrete block truncate">
+                    <span className="text-mist">→</span> {row.to}
                   </span>
-                  {/* Sur petit écran, camion et matériau se replient ici plutôt
-                      que de disparaître : ce sont eux qui rendent la ligne
-                      crédible. */}
-                  <span className="text-mist block text-xs lg:hidden">
-                    <span className="sm:hidden">{row.truck} · </span>
+                  {/* Quand le panneau est trop étroit pour leur colonne, camion
+                      et matériau se replient ici plutôt que de disparaître :
+                      ce sont eux qui rendent la ligne crédible. */}
+                  <span className="text-mist block text-xs @3xl:hidden">
+                    <span className="@xl:hidden">{row.truck} · </span>
                     {row.material}
                   </span>
                 </td>
-                <td className="text-mist hidden px-4 py-2.5 whitespace-nowrap lg:table-cell">
+                <td className="text-mist hidden px-3 py-2.5 whitespace-nowrap @3xl:table-cell">
                   {row.material}
                 </td>
-                <td className="text-concrete px-4 py-2.5 text-end whitespace-nowrap tabular-nums">
+                <td className="text-concrete px-3 py-2.5 text-end whitespace-nowrap tabular-nums">
                   {row.tonnage}
                 </td>
-                <td className="px-4 py-2.5">
+                <td className="px-3 py-2.5 whitespace-nowrap">
                   <StatusChip row={row} />
                 </td>
               </tr>
@@ -174,7 +185,7 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
         </table>
       </div>
 
-      <footer className="border-gravel text-mist border-t px-4 py-2.5 font-mono text-xs">
+      <footer className="border-gravel text-mist border-t px-3 py-2.5 font-mono text-xs">
         Données illustratives
       </footer>
     </section>

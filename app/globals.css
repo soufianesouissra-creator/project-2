@@ -156,9 +156,12 @@
 
 /* — La ligne de marquage, en CSS, pour les séparateurs non animés.
      Version SVG animée : components/motion/MarkingLine.tsx — */
+/* L'utilitaire ne fixe que l'ÉPAISSEUR. La longueur revient à l'appelant
+   (`w-full`, `w-6`, `inset-x-0`…). Imposer `inline-size: 100%` ici entrait en
+   conflit avec les utilitaires de taille selon l'ordre de la feuille — le
+   séparateur du pied de page barrait le nom qu'il devait séparer. */
 @utility marking-line-x {
   block-size: var(--marking-width);
-  inline-size: 100%;
   background-image: repeating-linear-gradient(
     to right,
     var(--color-marking) 0 calc(var(--marking-dash) * 1px),
@@ -168,7 +171,6 @@
 }
 @utility marking-line-y {
   inline-size: var(--marking-width);
-  block-size: 100%;
   background-image: repeating-linear-gradient(
     to bottom,
     var(--color-marking) 0 calc(var(--marking-dash) * 1px),
