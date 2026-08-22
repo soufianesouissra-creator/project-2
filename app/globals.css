@@ -1,0 +1,194 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOKENS — §4.2 du brief.
+   Tout ce qui suit est la seule source de vérité visuelle du site. Un
+   composant qui écrit une valeur en dur est un bug : il échappera au jour où
+   le groupe ALEQ imposera ses neutres.
+   ═════════════════════════════════════════════════════════════════════════ */
+@theme {
+  /* ── Couleur ─────────────────────────────────────────────────────────── */
+  --color-asphalt: #1b1d1f;
+  --color-gravel: #2a2e32;
+  --color-concrete: #e8e6e1;
+  --color-limestone: #f7f6f3;
+  --color-marking: #f5b800;
+  --color-ink: #121315;
+  --color-mist: #8e949a;
+  --color-signal: #c8371f;
+
+  /* ── Typographie ─────────────────────────────────────────────────────── */
+  --font-display: var(--font-archivo), 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Échelle 12 / 14 / 16 / 18 / 22 / 28 / 36 / 48 / 64 / 96 */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.4;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 1rem;
+  --text-base--line-height: 1.55;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.55;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.35;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 2.25rem;
+  --text-3xl--line-height: 1.1;
+  --text-4xl: 3rem;
+  --text-4xl--line-height: 1.05;
+  --text-5xl: 4rem;
+  --text-5xl--line-height: 1;
+  --text-6xl: 6rem;
+  --text-6xl--line-height: 0.95;
+
+  /* Fluides : réservés au H1 et aux grands nombres. */
+  --text-hero: clamp(2.125rem, 1.1rem + 4.4vw, 4.5rem);
+  --text-hero--line-height: 1.02;
+  --text-figure: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
+  --text-figure--line-height: 0.95;
+
+  /* ── Forme ───────────────────────────────────────────────────────────── */
+  --radius-control: 4px;
+  --radius-card: 8px;
+
+  /* ── Grille ──────────────────────────────────────────────────────────── */
+  --container-site: 90rem; /* 1440 px */
+
+  /* ── Marquage ────────────────────────────────────────────────────────── */
+  /* Tiret 24 / espace 16, épaisseur 2. Une seule définition, partout. */
+  --marking-dash: 24;
+  --marking-gap: 16;
+  --marking-width: 2px;
+
+  /* ── Mouvement ───────────────────────────────────────────────────────── */
+  --ease-out-road: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-reveal: 400ms;
+  --duration-row: 240ms;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE
+   ═════════════════════════════════════════════════════════════════════════ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-concrete);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Anneau de focus unique, visible sur clair comme sur sombre : le jaune de
+     marquage est contrasté sur les deux fonds du site. */
+  :focus-visible {
+    outline: var(--marking-width) solid var(--color-marking);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Les nombres qui s'empilent doivent s'aligner. */
+  table,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background-color: var(--color-marking);
+    color: var(--color-asphalt);
+  }
+
+  /* Un utilisateur qui a demandé moins de mouvement en obtient zéro. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILITAIRES
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* — Axe de chasse d'Archivo. Le geste typographique du site. — */
+@utility font-expanded {
+  font-variation-settings: 'wdth' 125;
+}
+@utility font-semicondensed {
+  font-variation-settings: 'wdth' 82;
+}
+
+/* — Eyebrow : capitales, interlettrage ouvert, ≤ 3 mots. — */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* — Contenu calé sur la grille, à l'intérieur d'une bande pleine largeur. — */
+@utility site-container {
+  margin-inline: auto;
+  max-width: var(--container-site);
+  padding-inline: 1.5rem;
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* — La ligne de marquage, en CSS, pour les séparateurs non animés.
+     Version SVG animée : components/motion/MarkingLine.tsx — */
+@utility marking-line-x {
+  block-size: var(--marking-width);
+  inline-size: 100%;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-marking) 0 calc(var(--marking-dash) * 1px),
+    transparent calc(var(--marking-dash) * 1px)
+      calc((var(--marking-dash) + var(--marking-gap)) * 1px)
+  );
+}
+@utility marking-line-y {
+  inline-size: var(--marking-width);
+  block-size: 100%;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--color-marking) 0 calc(var(--marking-dash) * 1px),
+    transparent calc(var(--marking-dash) * 1px)
+      calc((var(--marking-dash) + var(--marking-gap)) * 1px)
+  );
+}
+
+/* — Lien de saut, visible seulement au clavier. — */
+@utility skip-link {
+  position: absolute;
+  inset-inline-start: 1rem;
+  inset-block-start: -100%;
+  z-index: 100;
+  background-color: var(--color-marking);
+  color: var(--color-asphalt);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-control);
+  &:focus {
+    inset-block-start: 1rem;
+  }
+}
