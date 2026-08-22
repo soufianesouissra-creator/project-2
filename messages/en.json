@@ -50,5 +50,79 @@
   },
   "underConstruction": {
     "note": "Page under construction — delivered in a later phase."
+  },
+  "productCard": {
+    "norm": "Standard",
+    "layer": "Layer",
+    "granularity": "Grading",
+    "specs": "Specifications"
+  },
+  "projectCard": {
+    "client": "Client",
+    "product": "Product",
+    "tonnage": "Tonnage",
+    "year": "Year"
+  },
+  "home": {
+    "lignechaude": {
+      "eyebrow": "Process",
+      "title": "One tonne's journey, from ambient to compaction."
+    },
+    "produits": {
+      "eyebrow": "Mix designs",
+      "title": "One mix per use, one standard per mix.",
+      "all": "All mix designs"
+    },
+    "controle": {
+      "eyebrow": "Laboratory",
+      "title": "Every lot is tested.",
+      "external": "External control: {org}. Mix designed before the first tonne.",
+      "downloads": "Data sheets",
+      "frequency": "Frequency",
+      "pdfPending": "PDF to come"
+    },
+    "chaine": {
+      "eyebrow": "ALEQ group",
+      "title": "From quarry to road, no broken link.",
+      "stops": {
+        "carriere": {
+          "name": "Quarry",
+          "entity": "ALEQ",
+          "fact": "group aggregates"
+        },
+        "centrale": {
+          "name": "Plant",
+          "entity": "AleqFactory",
+          "fact": "{capacity} t/h"
+        },
+        "transport": {
+          "name": "Transport",
+          "entity": "TRANSPOLEQ",
+          "fact": "GPS tracking"
+        },
+        "chantier": {
+          "name": "Site",
+          "entity": "ALEQ",
+          "fact": "paver and rollers"
+        }
+      }
+    },
+    "realisations": {
+      "eyebrow": "References",
+      "title": "What the plant has delivered."
+    },
+    "zone": {
+      "eyebrow": "Delivery",
+      "title": "{radius} kilometres, two hours, 145 °C on arrival.",
+      "explain1": "Asphalt is laid above 135 °C: beyond two hours on the road, the temperature is no longer guaranteed.",
+      "explain2": "The radius is not commercial: it is thermal.",
+      "ringLabel": "{minutes} min",
+      "plantLabel": "Plant"
+    },
+    "ctaBand": {
+      "eyebrow": "Quote",
+      "title": "Tell us the tonnage, the date and the place.",
+      "missingContacts": "WhatsApp and planning phone: numbers to be filled in."
+    }
   }
 }

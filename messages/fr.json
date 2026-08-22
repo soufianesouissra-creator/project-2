@@ -50,5 +50,79 @@
   },
   "underConstruction": {
     "note": "Page en construction — livrée dans une phase ultérieure."
+  },
+  "productCard": {
+    "norm": "Norme",
+    "layer": "Couche",
+    "granularity": "Granularité",
+    "specs": "Caractéristiques"
+  },
+  "projectCard": {
+    "client": "Client",
+    "product": "Produit",
+    "tonnage": "Tonnage",
+    "year": "Année"
+  },
+  "home": {
+    "lignechaude": {
+      "eyebrow": "Process",
+      "title": "Le parcours d'une tonne, de l'ambiant au compactage."
+    },
+    "produits": {
+      "eyebrow": "Formulations",
+      "title": "Une formulation par usage, une norme par formulation.",
+      "all": "Toutes les formulations"
+    },
+    "controle": {
+      "eyebrow": "Laboratoire",
+      "title": "Chaque lot est contrôlé.",
+      "external": "Contrôle externe : {org}. Formulation étudiée avant la première tonne.",
+      "downloads": "Fiches techniques",
+      "frequency": "Fréquence",
+      "pdfPending": "PDF à venir"
+    },
+    "chaine": {
+      "eyebrow": "Groupe ALEQ",
+      "title": "De la carrière au chantier, sans rupture de chaîne.",
+      "stops": {
+        "carriere": {
+          "name": "Carrière",
+          "entity": "ALEQ",
+          "fact": "granulats du groupe"
+        },
+        "centrale": {
+          "name": "Centrale",
+          "entity": "AleqFactory",
+          "fact": "{capacity} t/h"
+        },
+        "transport": {
+          "name": "Transport",
+          "entity": "TRANSPOLEQ",
+          "fact": "suivi GPS"
+        },
+        "chantier": {
+          "name": "Chantier",
+          "entity": "ALEQ",
+          "fact": "finisseur et compacteurs"
+        }
+      }
+    },
+    "realisations": {
+      "eyebrow": "Références",
+      "title": "Ce que la centrale a livré."
+    },
+    "zone": {
+      "eyebrow": "Livraison",
+      "title": "{radius} kilomètres, deux heures, 145 °C à l'arrivée.",
+      "explain1": "L'enrobé se met en œuvre au-dessus de 135 °C : au-delà de deux heures de route, la température n'est plus garantie.",
+      "explain2": "Le rayon n'est pas commercial : il est thermique.",
+      "ringLabel": "{minutes} min",
+      "plantLabel": "Centrale"
+    },
+    "ctaBand": {
+      "eyebrow": "Devis",
+      "title": "Dites-nous le tonnage, la date et le lieu.",
+      "missingContacts": "WhatsApp et téléphone du planning : numéros à compléter."
+    }
   }
 }

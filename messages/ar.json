@@ -50,5 +50,79 @@
   },
   "underConstruction": {
     "note": "الصفحة قيد الإنشاء — تُسلَّم في مرحلة لاحقة."
+  },
+  "productCard": {
+    "norm": "المعيار",
+    "layer": "الطبقة",
+    "granularity": "التدرج الحبيبي",
+    "specs": "المواصفات"
+  },
+  "projectCard": {
+    "client": "العميل",
+    "product": "المنتج",
+    "tonnage": "الحمولة",
+    "year": "السنة"
+  },
+  "home": {
+    "lignechaude": {
+      "eyebrow": "المسار",
+      "title": "رحلة طن واحد، من درجة الحرارة المحيطة إلى الدمك."
+    },
+    "produits": {
+      "eyebrow": "التركيبات",
+      "title": "تركيبة لكل استعمال، ومعيار لكل تركيبة.",
+      "all": "جميع التركيبات"
+    },
+    "controle": {
+      "eyebrow": "المختبر",
+      "title": "كل دفعة تخضع للمراقبة.",
+      "external": "مراقبة خارجية: {org}. تُدرَس التركيبة قبل أول طن.",
+      "downloads": "البطاقات التقنية",
+      "frequency": "الوتيرة",
+      "pdfPending": "PDF قريبًا"
+    },
+    "chaine": {
+      "eyebrow": "مجموعة ALEQ",
+      "title": "من المقلع إلى الطريق، دون انقطاع في السلسلة.",
+      "stops": {
+        "carriere": {
+          "name": "المقلع",
+          "entity": "ALEQ",
+          "fact": "ركام المجموعة"
+        },
+        "centrale": {
+          "name": "المحطة",
+          "entity": "AleqFactory",
+          "fact": "{capacity} طن/ساعة"
+        },
+        "transport": {
+          "name": "النقل",
+          "entity": "TRANSPOLEQ",
+          "fact": "تتبع GPS"
+        },
+        "chantier": {
+          "name": "الورش",
+          "entity": "ALEQ",
+          "fact": "فرّاشة ومداحل"
+        }
+      }
+    },
+    "realisations": {
+      "eyebrow": "مراجع",
+      "title": "ما سلّمته المحطة."
+    },
+    "zone": {
+      "eyebrow": "التسليم",
+      "title": "{radius} كيلومترًا، ساعتان، 145 °م عند الوصول.",
+      "explain1": "تُفرَش الخلطة فوق 135 °م: بعد ساعتين من الطريق، لم تعد درجة الحرارة مضمونة.",
+      "explain2": "النطاق ليس تجاريًا: إنه حراري.",
+      "ringLabel": "{minutes} د",
+      "plantLabel": "المحطة"
+    },
+    "ctaBand": {
+      "eyebrow": "عرض سعر",
+      "title": "أخبرونا بالحمولة والتاريخ والمكان.",
+      "missingContacts": "واتساب وهاتف التخطيط: أرقام تُستكمل لاحقًا."
+    }
   }
 }

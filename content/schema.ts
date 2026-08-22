@@ -94,6 +94,21 @@ export const faqSchema = z.object({
 });
 export type Faq = z.infer<typeof faqSchema>;
 
+export const projectSchema = z.object({
+  slug: z.string().regex(/^[a-z0-9-]+$/),
+  name: localizedSchema,
+  client: z.string().min(1),
+  clientType: z.enum(["public", "prive", "groupe"]),
+  products: z.array(z.string()).min(1),
+  /** Rendered verbatim, e.g. "[12 500] t" while placeholder. */
+  tonnage: z.string().min(1),
+  year: z.string().min(1),
+  featured: z.boolean().default(false),
+  /** True until replaced by a real, documented chantier (TODO.md). */
+  placeholder: z.boolean().default(false),
+});
+export type Project = z.infer<typeof projectSchema>;
+
 export const plantSchema = z.object({
   legalName: z.string(),
   city: localizedSchema,

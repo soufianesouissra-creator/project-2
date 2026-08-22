@@ -3,7 +3,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/lib/i18n/navigation";
+import { Link, usePathname } from "@/lib/i18n/navigation";
 import { Container } from "./container";
 import { ButtonLink } from "./button";
 import { LocaleSwitcher } from "./locale-switcher";
@@ -18,12 +18,15 @@ const navItems = [
 ] as const;
 
 /**
- * Sticky header. tone="overlay" (dark hero pages) starts transparent with
- * calcaire ink and turns solid --calcaire after 24 px of scroll.
+ * Sticky header. On routes with a dark hero (home), it starts transparent
+ * with calcaire ink and turns solid --calcaire after 24 px of scroll; the
+ * hero pulls itself under it with -mt-16.
  */
-export function Header({ tone = "solid" }: { tone?: "solid" | "overlay" }) {
+export function Header() {
   const t = useTranslations("nav");
   const tCta = useTranslations("cta");
+  const pathname = usePathname();
+  const tone = pathname === "/" ? "overlay" : "solid";
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 

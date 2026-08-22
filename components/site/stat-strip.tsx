@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
-export type Stat = { label: string; value: string };
+export type Stat = { label: string; value: ReactNode };
 
 /**
  * The weighbridge line: mono, interpunct separators, hairlines above and
@@ -10,7 +10,7 @@ export function StatStrip({ stats }: { stats: Stat[] }) {
   return (
     <dl className="tnum flex flex-wrap items-baseline gap-x-3 gap-y-2 border-y border-current/20 py-4 font-mono text-14">
       {stats.map((stat, i) => (
-        <Fragment key={stat.label}>
+        <Fragment key={i}>
           {i > 0 && <span aria-hidden>·</span>}
           <div className="flex items-baseline gap-2">
             <dt className="uppercase tracking-[0.08em] opacity-60">

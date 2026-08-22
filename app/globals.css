@@ -120,6 +120,51 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* Motion moment 1 (DESIGN.md §5): hero load sequence, CSS-only so it costs
+   no JS and is transform/opacity only. Reduced motion renders final state. */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-clip {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-rise-1,
+    .hero-rise-2,
+    .hero-rise-3,
+    .hero-rise-4 {
+      animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .hero-rise-2 {
+      animation-delay: 0.08s;
+    }
+    .hero-rise-3 {
+      animation-delay: 0.16s;
+    }
+    .hero-rise-4 {
+      animation-delay: 0.24s;
+    }
+    .hero-clip {
+      animation: hero-clip 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+  }
+}
+
 /* Large standalone numbers: condensed width, stencilled-tank register. */
 @utility display-number {
   font-family: var(--font-display);
