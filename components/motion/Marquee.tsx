@@ -26,15 +26,18 @@ export function Marquee({
 
   if (reduced) {
     return (
-      <div className={cn('flex flex-wrap items-center gap-x-12 gap-y-6', className)} aria-label={label}>
+      <div className={cn('flex min-w-0 flex-wrap items-center gap-x-12 gap-y-6', className)} aria-label={label}>
         {children}
       </div>
     )
   }
 
   return (
+    /* `min-w-0` avec `overflow-hidden` : sans lui, la piste en `w-max`
+       remonte comme largeur minimale jusqu'à la grille parente et fait défiler
+       la PAGE horizontalement. Le débordement doit rester dans le composant. */
     <div
-      className={cn('group relative overflow-hidden', className)}
+      className={cn('group relative min-w-0 overflow-hidden', className)}
       aria-label={label}
       style={{
         maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)',

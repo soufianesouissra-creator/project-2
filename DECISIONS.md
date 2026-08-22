@@ -155,6 +155,17 @@ puis `notFound()`), et `app/not-found.tsx` pour ce qui n'atteint aucune langue.
 **Une intention non vérifiée à l'écran n'est pas un résultat.** Les cinq défauts ci-dessus
 compilaient, passaient le typecheck et le lint.
 
+### `overflow-x-auto` ne contient rien si le parent ne peut pas rétrécir
+
+Le board et le Marquee faisaient défiler la PAGE horizontalement à 390 px, alors que tous deux
+déclarent leur propre conteneur de défilement. Dans une grille ou un flex, un élément ne descend pas
+sous la largeur de son contenu par défaut : la largeur minimale du tableau remontait toute la chaîne
+jusqu'au `body`. `min-w-0` sur le composant — et sur ses enveloppes de grille — le corrige.
+
+Le contrôle vit dans `scripts/screenshots.mjs` et se refait à chaque section : `scrollWidth` du
+document doit rester égal à `clientWidth`, de 360 à 1920 px. Une capture pleine page qui revient plus
+large que la fenêtre demandée est le symptôme — c'est ainsi que celui-ci a été trouvé.
+
 ### 2026-08-22 · Une capture d'écran se prend sur un serveur relancé
 
 Deux séries de captures ont été prises contre un serveur `next start` démarré AVANT un `pnpm build`.

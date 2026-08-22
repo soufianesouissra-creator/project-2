@@ -99,7 +99,12 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
        panneau qui n'en tient que quatre, et le statut — la seule colonne qui
        dit ce qui se passe — sortirait du cadre. */
     <section
-      className={cn('bg-asphalt text-concrete border-gravel @container border', className)}
+      /* `min-w-0` : posé dans une grille ou un flex, un élément ne descend pas
+         sous la largeur de son contenu par défaut. Sans cela, le panneau
+         s'élargissait jusqu'au min-content du tableau et faisait défiler la
+         PAGE horizontalement à 390 px, au lieu de faire défiler le tableau
+         dans son propre cadre. */
+      className={cn('bg-asphalt text-concrete border-gravel @container min-w-0 border', className)}
       aria-label="Tableau de dispatch, données illustratives"
     >
       <header className="border-gravel flex items-center justify-between border-b px-3 py-3">
@@ -112,7 +117,7 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
         ) : null}
       </header>
 
-      <div className="overflow-x-auto">
+      <div className="w-full overflow-x-auto">
         <table className="w-full border-collapse text-start font-mono text-sm">
           <caption className="sr-only">
             Missions de transport en cours — données illustratives, non contractuelles.

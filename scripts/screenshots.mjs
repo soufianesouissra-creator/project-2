@@ -41,6 +41,20 @@ for (const viewport of VIEWPORTS) {
     await tab.waitForTimeout(2500)
     await tab.screenshot({ path: `${OUT}/${page.name}-${viewport.name}.png`, fullPage: true })
 
+    // Aucune page ne défile horizontalement (§10). Le contrôle est ici parce
+    // qu'une capture pleine page plus large que la fenêtre demandée est le
+    // symptôme, et qu'il se serait perdu dans une relecture de code.
+    const { clientWidth, scrollWidth } = await tab.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }))
+    if (scrollWidth > clientWidth) {
+      console.error(
+        `DÉBORDEMENT HORIZONTAL — ${page.path} à ${viewport.name} px : ${scrollWidth} > ${clientWidth}`,
+      )
+      process.exitCode = 1
+    }
+
     // État défilé de l'en-tête : il passe en bande d'enrobé après 80 px.
     if (page.name === 'styleguide') {
       await tab.evaluate(() => window.scrollTo(0, 600))

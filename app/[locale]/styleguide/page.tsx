@@ -225,14 +225,14 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
         title="Tableau de dispatch"
         note="L’élément signature. Premier objet lisible de la page d’accueil : la thèse du site est qu’on peut montrer chaque tonne en mouvement, alors on la montre avant de l’écrire."
       >
-        <div className="grid gap-8 lg:grid-cols-[1fr_minmax(0,34rem)]">
-          <div>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)]">
+          <div className="min-w-0">
             <p className="text-mist mb-3 font-mono text-xs">
               live — un statut avance toutes les 6 s, une mission entre, la plus ancienne sort
             </p>
             <DispatchBoard rows={DEMO_ROWS} incoming={INCOMING_ROWS} live />
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-mist mb-3 font-mono text-xs">
               largeur du hero (~540 px), statique — camion et matériau se replient dans la colonne
               trajet plutôt que de sortir du panneau
@@ -438,7 +438,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
       {/* ── Mouvement ────────────────────────────────────────────────────── */}
       <Section id="mouvement" title="Mouvement" note="Règle unique : si un mouvement n’encode rien du transport — déplacement, séquence, progression — il est supprimé.">
         <div className="grid gap-8 lg:grid-cols-3">
-          <div>
+          <div className="min-w-0">
             <p className="text-mist mb-3 font-mono text-xs">Reveal — 12 px + opacité, 400 ms, une fois</p>
             <Reveal>
               <div className="bg-limestone border-ink/10 border p-6 text-sm">
@@ -446,13 +446,13 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
               </div>
             </Reveal>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-mist mb-3 font-mono text-xs">Counter — compte une fois, à l’entrée dans le champ</p>
             <p className="font-display font-expanded text-ink text-4xl font-bold">
               <Counter value={27.4} decimals={1} /> <span className="text-mist text-xl">t</span>
             </p>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-mist mb-3 font-mono text-xs">Marquee — défilement continu, arrêt au survol</p>
             <Marquee label="Exemple de défilement">
               {['Client A', 'Client B', 'Client C', 'Client D'].map((name) => (
