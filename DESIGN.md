@@ -27,7 +27,8 @@ cannot drift.
 
 **Contrast decision (verified, not assumed):** `#F24E1E` on `#121214` ≈ 5.4:1 — passes AA for
 all text. `#F24E1E` on `#E9E8E4` ≈ 2.9:1 — **fails** for text. So `--chaud` is a *graphic*
-colour on light grounds (button fills with `--calcaire` text ≈ 4.6:1, rules, marks) and
+colour on light grounds (button fills carry `--bitume` ink ≈ 5.4:1 — calcaire ink on the
+accent fails at ≈ 2.9:1 — plus rules, marks) and
 `--chaud-encre` (≈ 4.9:1 on `--calcaire`) is the *typographic* accent on light grounds. One
 accent to the eye, two tokens in the code. This rule goes in `/styleguide` so it survives us.
 

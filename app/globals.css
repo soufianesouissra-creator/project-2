@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/*
+ * AleqFactory design tokens — see DESIGN.md §1–§2.
+ * Two registers: froid (documents, quality, legal) on --calcaire,
+ * chaud (production, process, delivery) on --bitume.
+ */
+@theme {
+  /* ---- Colour ---- */
+  --color-calcaire: #e9e8e4; /* page ground (froid) — mineral grey, not cream */
+  --color-granulat: #c9c6be; /* hairlines, secondary surfaces */
+  --color-bitume: #121214; /* ink on froid; ground of chaud sections */
+  --color-fonte: #2a2b2f; /* surfaces on chaud */
+  --color-chaud: #f24e1e; /* the single accent — graphics, CTAs, live values */
+  --color-chaud-encre: #b33a10; /* accent for TEXT on --calcaire (AA ≈ 4.9:1) */
+  --color-acier: #5e6b76; /* data labels, captions, map strokes */
+
+  /* ---- Type families (wired to next/font variables in the layout) ---- */
+  --font-display: var(--font-bricolage), "Arial Black", sans-serif;
+  --font-body: var(--font-archivo), Arial, sans-serif;
+  --font-mono: var(--font-plex-mono), "Courier New", monospace;
+  --font-arabic: var(--font-plex-arabic), Tahoma, sans-serif;
+
+  /* ---- Fluid type scale: 12/14/16/20/28/40/64/96 ---- */
+  --text-12: 0.75rem;
+  --text-12--line-height: 1.4;
+  --text-14: 0.875rem;
+  --text-14--line-height: 1.5;
+  --text-16: 1rem;
+  --text-16--line-height: 1.55;
+  --text-20: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --text-20--line-height: 1.55;
+  --text-28: clamp(1.375rem, 1.16rem + 1vw, 1.75rem);
+  --text-28--line-height: 1.2;
+  --text-40: clamp(1.75rem, 1.32rem + 2vw, 2.5rem);
+  --text-40--line-height: 1.05;
+  --text-64: clamp(2.5rem, 1.8rem + 3.2vw, 4rem);
+  --text-64--line-height: 0.95;
+  --text-96: clamp(3rem, 2rem + 5vw, 6rem);
+  --text-96--line-height: 0.95;
+
+  /* ---- Surfaces ---- */
+  --radius-surface: 2px;
+}
+
+/* Register grounds. A section's register is semantic (content type), set as
+   data-register by the <Section> component — never an ad-hoc class. */
+@layer base {
+  [data-register="froid"] {
+    background-color: var(--color-calcaire);
+    color: var(--color-bitume);
+  }
+
+  [data-register="chaud"] {
+    background-color: var(--color-bitume);
+    color: var(--color-calcaire);
+    position: relative;
+  }
+
+  /* 2% asphalt grain so chaud reads as plant-at-night, not "dark mode".
+     Inline SVG turbulence: zero requests, sits under content. */
+  [data-register="chaud"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.02;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  [data-register="chaud"] > * {
+    position: relative;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-calcaire);
+    color: var(--color-bitume);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html[dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+
+  ::selection {
+    background-color: var(--color-chaud);
+    color: var(--color-calcaire);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-chaud);
+    outline-offset: 2px;
+  }
+
+  [data-register="froid"] :focus-visible {
+    outline-color: var(--color-chaud-encre);
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-14);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* All data is tabular — counters and readouts never shift layout. */
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Large standalone numbers: condensed width, stencilled-tank register. */
+@utility display-number {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 80;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Headlines: wide width axis. */
+@utility display-wide {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 110;
+  font-weight: 600;
+}

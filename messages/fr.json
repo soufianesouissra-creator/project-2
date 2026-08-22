@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "centrale": "La centrale",
+    "produits": "Produits",
+    "environnement": "Environnement",
+    "carrieres": "Carrières",
+    "services": "Services",
+    "qualite": "Qualité",
+    "realisations": "Réalisations",
+    "groupe": "Groupe",
+    "contact": "Contact",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "home": "AleqFactory — accueil"
+  },
+  "cta": {
+    "quote": "Demander un devis",
+    "seeProducts": "Voir les produits",
+    "quoteForProduct": "Demander un devis pour ce produit",
+    "whatsapp": "WhatsApp",
+    "callPlanning": "Appeler le planning"
+  },
+  "hero": {
+    "eyebrow": "Centrale d'enrobage — {city}, Maroc",
+    "title": "Enrobés fabriqués, contrôlés, livrés à température.",
+    "sub": "Centrale discontinue de {capacity} t/h à {city}. Formulations conformes NM EN 13108, contrôle interne et externe, livraison dans un rayon de {radius} km."
+  },
+  "stats": {
+    "capacity": "Capacité",
+    "hotStorage": "Stock à chaud",
+    "bitumen": "Bitume",
+    "delivery": "Livraison"
+  },
+  "footer": {
+    "tagline": "La centrale qui livre à température.",
+    "sitemap": "Plan du site",
+    "contact": "Contact",
+    "group": "Groupe ALEQ",
+    "groupLine": "AleqFactory est l'entité industrielle du groupe ALEQ — travaux routiers, transport et logistique, enrobés.",
+    "legalNotice": "Mentions légales",
+    "privacy": "Confidentialité",
+    "identifiers": "ICE [à compléter] · RC [à compléter] · IF [à compléter]",
+    "copyright": "© {year} AleqFactory. Tous droits réservés."
+  },
+  "locale": {
+    "switchLabel": "Langue",
+    "fr": "FR",
+    "en": "EN",
+    "ar": "AR"
+  },
+  "underConstruction": {
+    "note": "Page en construction — livrée dans une phase ultérieure."
+  }
+}

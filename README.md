@@ -5,12 +5,27 @@ asphalt plant (centrale d'enrobage), delivery and paving services.
 
 ## Status
 
-**Phase 0 — design plan, awaiting approval.** No application code yet, by design: the working
-method (master prompt, § 13) gates all code on approval of the design plan.
+**Phase 1 delivered — scaffold.** Design plan (Phase 0) approved. The app builds and
+serves FR (root), EN (`/en`) and the AR RTL scaffold (`/ar`); design tokens, fonts,
+header/footer, typed content schemas and the dev styleguide are in place. Phase 2
+(full Accueil + ThermalChain) is next.
+
+## Run
+
+```bash
+npm install
+npm run dev        # http://localhost:3000 — /styleguide is visible in dev
+npm run build      # production build (SSG for all locales)
+npm run typecheck
+```
+
+No environment variables are needed yet; `.env.example` documents the ones coming in
+later phases (Graph mailbox, Turnstile, Blob).
 
 | File | Contents |
 |---|---|
 | `DESIGN.md` | Phase 0 deliverable: palette, type roles, wireframes (Accueil + fiche produit), ThermalChain spec, motion plan, FR copy, self-critique |
+| `CONTENT.md` | How to edit content: add a product, a job; plant data sheet |
 | `TODO.md` | Every `[TO FILL]` default applied and every assumption taken |
 | `SHOTLIST.md` | One-day photo/video shoot brief (no assets exist yet) |
 

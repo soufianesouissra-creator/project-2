@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "centrale": "The plant",
+    "produits": "Products",
+    "environnement": "Environment",
+    "carrieres": "Careers",
+    "services": "Services",
+    "qualite": "Quality",
+    "realisations": "Projects",
+    "groupe": "Group",
+    "contact": "Contact",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "home": "AleqFactory — home"
+  },
+  "cta": {
+    "quote": "Request a quote",
+    "seeProducts": "See products",
+    "quoteForProduct": "Request a quote for this product",
+    "whatsapp": "WhatsApp",
+    "callPlanning": "Call the planning desk"
+  },
+  "hero": {
+    "eyebrow": "Asphalt plant — {city}, Morocco",
+    "title": "Asphalt produced, tested, delivered at temperature.",
+    "sub": "Batch plant, {capacity} t/h, in {city}. Mix designs to NM EN 13108, in-house and external testing, delivery within a {radius} km radius."
+  },
+  "stats": {
+    "capacity": "Capacity",
+    "hotStorage": "Hot storage",
+    "bitumen": "Bitumen",
+    "delivery": "Delivery"
+  },
+  "footer": {
+    "tagline": "The plant that delivers at temperature.",
+    "sitemap": "Site map",
+    "contact": "Contact",
+    "group": "ALEQ group",
+    "groupLine": "AleqFactory is the industrial entity of the ALEQ group — road works, transport and logistics, asphalt.",
+    "legalNotice": "Legal notice",
+    "privacy": "Privacy",
+    "identifiers": "ICE [to fill] · RC [to fill] · IF [to fill]",
+    "copyright": "© {year} AleqFactory. All rights reserved."
+  },
+  "locale": {
+    "switchLabel": "Language",
+    "fr": "FR",
+    "en": "EN",
+    "ar": "AR"
+  },
+  "underConstruction": {
+    "note": "Page under construction — delivered in a later phase."
+  }
+}

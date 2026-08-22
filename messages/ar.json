@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "centrale": "المحطة",
+    "produits": "المنتجات",
+    "environnement": "البيئة",
+    "carrieres": "التوظيف",
+    "services": "الخدمات",
+    "qualite": "الجودة",
+    "realisations": "الإنجازات",
+    "groupe": "المجموعة",
+    "contact": "اتصال",
+    "menuOpen": "فتح القائمة",
+    "menuClose": "إغلاق القائمة",
+    "home": "AleqFactory — الرئيسية"
+  },
+  "cta": {
+    "quote": "طلب عرض سعر",
+    "seeProducts": "عرض المنتجات",
+    "quoteForProduct": "طلب عرض سعر لهذا المنتج",
+    "whatsapp": "واتساب",
+    "callPlanning": "الاتصال بقسم التخطيط"
+  },
+  "hero": {
+    "eyebrow": "محطة الخلطات الإسفلتية — {city}، المغرب",
+    "title": "خلطات إسفلتية مُصنَّعة، مُراقَبة، مُسلَّمة بدرجة الحرارة المطلوبة.",
+    "sub": "محطة إنتاج متقطع بطاقة {capacity} طن/ساعة في {city}. تركيبات مطابقة للمعيار NM EN 13108، مراقبة داخلية وخارجية، تسليم في نطاق {radius} كلم."
+  },
+  "stats": {
+    "capacity": "الطاقة الإنتاجية",
+    "hotStorage": "التخزين الساخن",
+    "bitumen": "البيتومين",
+    "delivery": "التسليم"
+  },
+  "footer": {
+    "tagline": "المحطة التي تُسلِّم بدرجة الحرارة المطلوبة.",
+    "sitemap": "خريطة الموقع",
+    "contact": "اتصال",
+    "group": "مجموعة ALEQ",
+    "groupLine": "AleqFactory هي الكيان الصناعي لمجموعة ALEQ — أشغال الطرق، النقل واللوجستيك، الخلطات الإسفلتية.",
+    "legalNotice": "إشعار قانوني",
+    "privacy": "الخصوصية",
+    "identifiers": "ICE [يُستكمل] · RC [يُستكمل] · IF [يُستكمل]",
+    "copyright": "© {year} AleqFactory. جميع الحقوق محفوظة."
+  },
+  "locale": {
+    "switchLabel": "اللغة",
+    "fr": "FR",
+    "en": "EN",
+    "ar": "AR"
+  },
+  "underConstruction": {
+    "note": "الصفحة قيد الإنشاء — تُسلَّم في مرحلة لاحقة."
+  }
+}
