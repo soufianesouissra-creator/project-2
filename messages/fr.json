@@ -1,0 +1,53 @@
+{
+  "common": {
+    "requestQuote": "Demander un devis",
+    "viewFleet": "Voir la flotte",
+    "viewJobs": "Voir les postes",
+    "sendRequest": "Envoyer la demande",
+    "sendMessage": "Envoyer le message",
+    "apply": "Postuler",
+    "nextStep": "Étape suivante",
+    "back": "Retour",
+    "whatsapp": "WhatsApp",
+    "skipToContent": "Aller au contenu",
+    "illustrativeData": "Données illustratives"
+  },
+  "header": {
+    "homeLabel": "TRANSPOLEQ, accueil",
+    "mainNav": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "footer": {
+    "contact": "Contact",
+    "legal": "Légal",
+    "language": "Langue",
+    "soon": "bientôt",
+    "legalInfo": "Informations légales"
+  },
+  "toast": {
+    "quoteSent": "Demande envoyée",
+    "applicationSent": "Candidature envoyée",
+    "messageSent": "Message envoyé"
+  },
+  "error": {
+    "required": "Ce champ est requis.",
+    "phone": "Indiquez un numéro de téléphone valide (ex. 06 12 34 56 78).",
+    "fileTooLarge": "Le fichier dépasse 5 Mo.",
+    "filePdfOnly": "Format accepté : PDF.",
+    "sendFailed": "L’envoi a échoué. Réessayez ou appelez le {phone}."
+  },
+  "empty": {
+    "noJobs": "Aucun poste ouvert pour le moment. Envoyez une candidature spontanée.",
+    "noReferences": "Aucune référence ne correspond à ce filtre."
+  },
+  "cookies": {
+    "message": "Nous utilisons une mesure d’audience anonyme.",
+    "accept": "Accepter",
+    "refuse": "Refuser"
+  },
+  "notFound": {
+    "title": "Cette page n’est pas sur notre itinéraire.",
+    "home": "Retour à l’accueil"
+  }
+}
