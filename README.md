@@ -36,11 +36,15 @@ Puis ouvrir **http://localhost:3000/styleguide** — c'est le livrable de la Pha
 
 ```
 app/
+  layout.tsx          passe-plat : Next exige un layout racine réel, sinon la
+                      frontière 404 revient à un layout fantôme
+  not-found.tsx       404 hors langue, document autonome
   [locale]/
     layout.tsx        en-tête, pied de page, i18n, toasts, défilement lissé
     page.tsx          page d'attente de la Phase 0
     styleguide/       le système visuel, en une page — noindex
-    not-found.tsx     404
+    not-found.tsx     404 du site, avec en-tête et pied de page
+    [...rest]/        attrape-tout qui fait rendre le 404 français
   globals.css         TOUS les jetons de design (@theme)
   robots.ts           tout fermé tant que le site n'est pas public
 components/
