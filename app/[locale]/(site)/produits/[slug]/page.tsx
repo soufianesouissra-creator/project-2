@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
@@ -11,6 +12,11 @@ import { ButtonLink } from "@/components/site/button";
 import { SpecTable, type SpecRow } from "@/components/site/spec-table";
 import { ProductCard } from "@/components/site/product-card";
 import { DownloadList } from "@/components/site/download-list";
+import {
+  BreadcrumbJsonLd,
+  ProductJsonLd,
+} from "@/components/site/json-ld";
+import { pathFor } from "@/lib/seo";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -19,11 +25,17 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const product = products.find((p) => p.slug === slug);
-  return { title: product?.name };
+  if (!product) return {};
+  return localizedMetadata({
+    locale,
+    path: `/produits/${product.slug}`,
+    title: product.name,
+    description: loc(product.usage, locale),
+  });
 }
 
 export default async function ProduitPage({
@@ -60,6 +72,17 @@ export default async function ProduitPage({
 
   return (
     <>
+      <ProductJsonLd
+        name={product.name}
+        description={loc(product.usage, locale)}
+        path={pathFor(locale, `/produits/${product.slug}`)}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: tNav("produits"), path: pathFor(locale, "/produits") },
+          { name: product.name },
+        ]}
+      />
       <Section register="froid" className="pb-10 md:pb-14">
         <Container>
           <nav

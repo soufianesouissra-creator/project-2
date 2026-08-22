@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { layerLabels, layerOrder, productsByLayer } from "@/content/products";
 import { loc } from "@/lib/content";
@@ -7,9 +8,20 @@ import { Section } from "@/components/site/section";
 import { PageHeader } from "@/components/site/page-header";
 import { ProductCard } from "@/components/site/product-card";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("produits") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "produitsPage" });
+  return localizedMetadata({
+    locale,
+    path: "/produits",
+    title: t("produits"),
+    description: tp("intro"),
+  });
 }
 
 export default async function ProduitsPage({

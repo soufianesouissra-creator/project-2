@@ -16,7 +16,7 @@ const colors = [
   ["--fonte", "#2A2B2F", "surfaces on chaud"],
   ["--chaud", "#F24E1E", "accent — graphics, CTAs, live values"],
   ["--chaud-encre", "#B33A10", "accent for TEXT on calcaire (AA)"],
-  ["--acier", "#5E6B76", "data labels, captions"],
+  ["--acier", "#53616C", "data labels, captions"],
 ] as const;
 
 const typeScale = [

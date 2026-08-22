@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { plant } from "@/content/plant";
 import { equipment, gallery, roles, timeline } from "@/content/centrale";
@@ -11,9 +12,20 @@ import { Eyebrow } from "@/components/site/eyebrow";
 import { SpecTable } from "@/components/site/spec-table";
 import { ArtPlaceholder } from "@/components/site/art-placeholder";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("centrale") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "centralePage" });
+  return localizedMetadata({
+    locale,
+    path: "/centrale",
+    title: t("centrale"),
+    description: tp("intro"),
+  });
 }
 
 export default async function CentralePage({

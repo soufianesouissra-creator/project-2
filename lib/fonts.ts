@@ -25,6 +25,10 @@ export const plexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
   variable: "--font-plex-mono",
   display: "swap",
+  // Not preloaded: mono sets small labels, so its swap is invisible next to
+  // the display font's — and the h1's Bricolage arrives sooner without the
+  // two extra files competing for slow-4G bandwidth.
+  preload: false,
 });
 
 export const plexArabic = IBM_Plex_Sans_Arabic({
@@ -32,4 +36,7 @@ export const plexArabic = IBM_Plex_Sans_Arabic({
   weight: ["400", "500"],
   variable: "--font-plex-arabic",
   display: "swap",
+  // Not preloaded: FR/EN pages never paint Arabic glyphs; unicode-range
+  // fetches it on /ar only. Saves two font downloads from every LCP.
+  preload: false,
 });

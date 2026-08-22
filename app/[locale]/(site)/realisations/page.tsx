@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { projects } from "@/content/projects";
 import { Container } from "@/components/site/container";
@@ -6,9 +7,20 @@ import { Section } from "@/components/site/section";
 import { PageHeader } from "@/components/site/page-header";
 import { ProjectCard } from "@/components/site/project-card";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("realisations") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "realisationsPage" });
+  return localizedMetadata({
+    locale,
+    path: "/realisations",
+    title: t("realisations"),
+    description: tp("intro"),
+  });
 }
 
 // Year / client-type / product filters arrive with real project data —

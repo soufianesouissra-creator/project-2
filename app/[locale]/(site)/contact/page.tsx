@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { plant } from "@/content/plant";
 import { products } from "@/content/products";
@@ -7,9 +8,20 @@ import { Section } from "@/components/site/section";
 import { PageHeader } from "@/components/site/page-header";
 import { QuoteForm } from "@/components/site/quote-form";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("contact") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "contactPage" });
+  return localizedMetadata({
+    locale,
+    path: "/contact",
+    title: t("contact"),
+    description: tp("display"),
+  });
 }
 
 export default async function ContactPage({

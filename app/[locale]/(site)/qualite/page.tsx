@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { plant } from "@/content/plant";
 import { labTests } from "@/content/tests";
@@ -12,9 +13,20 @@ import { SectionHeader } from "@/components/site/section-header";
 import { ArtPlaceholder } from "@/components/site/art-placeholder";
 import { DownloadList } from "@/components/site/download-list";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("qualite") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "qualitePage" });
+  return localizedMetadata({
+    locale,
+    path: "/qualite",
+    title: t("qualite"),
+    description: tp("intro"),
+  });
 }
 
 export default async function QualitePage({

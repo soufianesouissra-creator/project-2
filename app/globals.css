@@ -13,7 +13,7 @@
   --color-fonte: #2a2b2f; /* surfaces on chaud */
   --color-chaud: #f24e1e; /* the single accent — graphics, CTAs, live values */
   --color-chaud-encre: #b33a10; /* accent for TEXT on --calcaire (AA ≈ 4.9:1) */
-  --color-acier: #5e6b76; /* data labels, captions, map strokes */
+  --color-acier: #53616c; /* data labels, captions, map strokes (AA on calcaire) */
 
   /* ---- Type families (wired to next/font variables in the layout) ---- */
   --font-display: var(--font-bricolage), "Arial Black", sans-serif;
@@ -122,6 +122,15 @@
 
 /* Motion moment 1 (DESIGN.md §5): hero load sequence, CSS-only so it costs
    no JS and is transform/opacity only. Reduced motion renders final state. */
+@keyframes hero-rise-solid {
+  from {
+    transform: translateY(24px);
+  }
+  to {
+    transform: none;
+  }
+}
+
 @keyframes hero-rise {
   from {
     opacity: 0;
@@ -151,6 +160,7 @@
       animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .hero-rise-2 {
+      animation-name: hero-rise-solid;
       animation-delay: 0.08s;
     }
     .hero-rise-3 {

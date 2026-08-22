@@ -22,7 +22,7 @@ cannot drift.
 | `--fonte` | `#2A2B2F` | surfaces on chaud (cards, placeholder blocks) |
 | `--chaud` | `#F24E1E` | the single accent — CTAs, live values, one 1 px rule per screen at most |
 | `--chaud-encre` | `#B33A10` | accent for **text and links on `--calcaire`** (see below) |
-| `--acier` | `#5E6B76` | data labels, captions, map strokes |
+| `--acier` | `#53616C` | data labels, captions, map strokes (darkened from #5E6B76 — 4.4:1 failed AA on calcaire) |
 | `--calcaire-70` | `#E9E8E4` @ 70 % | secondary text on chaud grounds |
 
 **Contrast decision (verified, not assumed):** `#F24E1E` on `#121214` ≈ 5.4:1 — passes AA for

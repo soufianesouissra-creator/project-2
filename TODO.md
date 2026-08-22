@@ -60,6 +60,43 @@ Each line below is an assumption until confirmed.
 9. Publicly displayable ISO / Q&C statuses → assumed only « ISO 9001 en cours » — verify.
 10. `(portal)` route group → **reserved, not built** (default).
 
+## Deliberate deviations from the master prompt (Phases 1–5)
+
+- [ ] **Native form elements instead of shadcn/ui.** The visual language needs plain
+      bordered inputs and a native `<select>`; no Dialog/Accordion exists yet. Revisit if
+      one becomes needed.
+- [ ] **Réalisations as typed TS, not MDX.** The three entries are placeholders without
+      prose; `content/projects.ts` keeps them schema-checked. Switch to MDX when real
+      chantiers with narrative and photos arrive.
+- [ ] **Lenis smooth scroll off** (fights scroll-pinning on mid-range Android). Re-profile
+      in a later pass if wanted.
+- [ ] **Coverage map is a schematic time-ring SVG, not MapLibre.** Deliberate while GPS is
+      missing — the constraint communicated is thermal, and the diagram needs no
+      coordinates. Wire MapLibre + precomputed isochrone GeoJSON once GPS exists.
+- [ ] **Réalisations filters (year / client type / product) not built** — three template
+      cards filter to nothing useful. Add with real project data.
+- [ ] **Cloudflare Turnstile pending** site keys; honeypot + per-IP rate limit are live.
+- [ ] **Vercel Blob for attachments not wired** — attachments ride the email itself
+      (10 MB cap enforced); Blob storage becomes relevant with the future portal.
+- [ ] **Hero stat-strip "typing" replaced by rise/fade** — steps() typing fights wrapping
+      at 390 px and delays comprehension.
+- [ ] **AR content** is scaffold-quality: nav/UI strings translated, long-form content
+      falls back to FR. Professional AR copy is the Phase 2 (content) task from the brief.
+
+## Phase 5 audit results (measured in the build container)
+
+Lighthouse 12, mobile emulation, production build, three pages (Accueil, Produits,
+Contact): **accessibility 100 · best-practices 100 · SEO 100** (the only flagged SEO item
+is the canonical pointing at aleqfactory.ma while auditing localhost — correct in
+production) · **performance 88–93, LCP 3.1–3.6 s** under simulated slow-4G with ~470 ms
+local TTFB and a shared-CPU sandbox. The remaining LCP driver is the Bricolage font swap
+re-recording the h1 paint; CLS is 0 and TBT ≤ 200 ms everywhere.
+
+- [ ] Re-measure on the Vercel production URL (CDN TTFB ~100 ms) — projected ≥ 95. If it
+      still falls short, the lever is the display-font loading strategy (self-hosted
+      subset of Bricolage's used axes, or `display: optional` at the cost of first-visit
+      brand type). Decide with real numbers, not here.
+
 ## Later-phase reminders
 
 - [ ] `« [0] accident avec arrêt depuis [date] »` renders **only if true** — needs data.

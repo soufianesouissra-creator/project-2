@@ -2,9 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import clsx from "clsx";
 import { routing } from "@/lib/i18n/routing";
 import { archivo, bricolage, plexArabic, plexMono } from "@/lib/fonts";
+import { SITE_URL } from "@/lib/seo";
+import { OrganizationJsonLd } from "@/components/site/json-ld";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -12,6 +16,7 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "AleqFactory — Centrale d'enrobage",
     template: "%s — AleqFactory",
@@ -44,6 +49,13 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <OrganizationJsonLd />
+        {process.env.VERCEL && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   );

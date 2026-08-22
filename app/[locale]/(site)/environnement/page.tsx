@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/site/container";
 import { Section } from "@/components/site/section";
 import { PageHeader } from "@/components/site/page-header";
 import { ArtPlaceholder } from "@/components/site/art-placeholder";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("nav");
-  return { title: t("environnement") };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "nav" });
+  const tp = await getTranslations({ locale, namespace: "envPage" });
+  return localizedMetadata({
+    locale,
+    path: "/environnement",
+    title: t("environnement"),
+    description: tp("intro"),
+  });
 }
 
 const items = ["filtre", "rap", "tiedes", "eau", "hse"] as const;

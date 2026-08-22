@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { localizedMetadata } from "@/lib/seo";
 import { plant } from "@/content/plant";
 import { featuredProducts } from "@/content/products";
 import { featuredProjects } from "@/content/projects";
@@ -20,6 +22,25 @@ import { CoverageDiagram } from "@/components/site/coverage-diagram";
 import { DownloadList } from "@/components/site/download-list";
 import { CountUp } from "@/components/motion/count-up";
 import { ThermalChain } from "@/components/motion/thermal-chain";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "hero" });
+  return localizedMetadata({
+    locale,
+    path: "/",
+    title: t("title"),
+    description: t("sub", {
+      city: loc(plant.city, locale),
+      capacity: plant.capacityTph,
+      radius: plant.deliveryRadiusKm,
+    }),
+  });
+}
 
 export default async function HomePage({
   params,

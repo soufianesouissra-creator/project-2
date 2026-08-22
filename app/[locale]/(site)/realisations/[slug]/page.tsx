@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { localizedMetadata } from "@/lib/seo";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { projects } from "@/content/projects";
@@ -21,7 +22,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   const project = projects.find((p) => p.slug === slug);
-  return { title: project ? loc(project.name, locale) : undefined };
+  if (!project) return {};
+  return localizedMetadata({
+    locale,
+    path: `/realisations/${project.slug}`,
+    title: loc(project.name, locale),
+  });
 }
 
 export default async function RealisationPage({

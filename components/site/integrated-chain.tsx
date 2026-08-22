@@ -35,7 +35,7 @@ export function IntegratedChain({
             <p className="display-wide text-28">{stop.name}</p>
             <p className="mt-1 text-14 opacity-70">{stop.entity}</p>
             {stop.fact && (
-              <p className="tnum mt-2 font-mono text-12 uppercase tracking-[0.08em] text-acier">
+              <p className="tnum mt-2 font-mono text-12 uppercase tracking-[0.08em] opacity-60">
                 {stop.fact}
               </p>
             )}
