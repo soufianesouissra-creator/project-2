@@ -3,6 +3,16 @@
 import { useEffect, useRef, useState } from 'react'
 import { useCalmMode } from '@/components/motion/useReducedMotion'
 
+/**
+ * Passer à `true` le jour où les trois fichiers existent réellement dans
+ * `public/media/hero/` (voir `public/media/README.md`).
+ *
+ * Tant qu'ils manquent, les demander produit trois 404 à CHAQUE chargement de
+ * page : du bruit dans la console, des requêtes perdues, et un journal
+ * d'erreurs qu'on prend l'habitude d'ignorer.
+ */
+const HERO_MEDIA_AVAILABLE = false
+
 const POSTER = '/media/hero/hero-poster.jpg'
 const SOURCES = [
   { src: '/media/hero/hero-loop.webm', type: 'video/webm' },
@@ -36,7 +46,7 @@ export function HeroVideo() {
     return () => cancelAnimationFrame(id)
   }, [])
 
-  if (calm || !mounted) {
+  if (!HERO_MEDIA_AVAILABLE || calm || !mounted) {
     return <div aria-hidden className="bg-asphalt absolute inset-0" />
   }
 

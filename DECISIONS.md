@@ -172,3 +172,61 @@ Deux séries de captures ont été prises contre un serveur `next start` démarr
 Le serveur servait un HTML référençant des feuilles de style d'une compilation disparue : pages sans
 styles et exception côté client, sur un code parfaitement sain. `scripts/screenshots.mjs` exige un
 serveur relancé après la compilation.
+
+---
+
+## Phase 1
+
+### 2026-08-23 · Les formulaires sont entièrement CONTRÔLÉS par React
+
+Découvert en testant les deux formulaires dans un vrai navigateur, pas en relisant le code.
+
+Avec des champs non contrôlés, la saisie disparaissait :
+
+- **Devis** — passer à l'étape suivante remettait à zéro les champs des étapes précédentes. Les
+  nœuds du DOM restaient les mêmes, seules leurs valeurs étaient effacées. Le serveur recevait une
+  demande sans trajet ni fréquence, et l'utilisateur voyait « certains champs doivent être corrigés »
+  sur des champs qu'il avait remplis.
+- **Contact** — React remet un formulaire à zéro quand son action se termine, y compris quand elle se
+  termine par un REFUS. Un visiteur dont le numéro était rejeté perdait le message qu'il venait
+  d'écrire. Personne ne le réécrit.
+
+Un état React unique par formulaire rend les deux pannes impossibles, et c'est ce que le brief
+demandait déjà (« state kept in React, no localStorage »).
+
+### 2026-08-23 · `noValidate` sur les deux formulaires
+
+La validation native du navigateur REFUSE d'envoyer un formulaire dont un champ requis est masqué —
+nos étapes inactives le sont — et échoue en silence avec « invalid form control is not focusable ».
+Le formulaire de devis ne partait jamais. Et ses messages s'affichent dans la langue du navigateur,
+pas dans celle du site.
+
+Toute la validation passe donc par le **même schéma zod** : `quoteSchema.pick(...)` par étape côté
+client pour le confort, le schéma entier côté serveur pour de vrai. Une seule définition par donnée.
+
+### 2026-08-23 · Un média absent n'est pas demandé
+
+`HeroVideo` produisait trois 404 à chaque chargement de page (poster, mp4, webm), pour des fichiers
+qui n'ont pas encore été tournés. Un drapeau `HERO_MEDIA_AVAILABLE` les coupe jusqu'à livraison.
+Même principe pour `MediaFrame` : un emplacement réservé, pas une image cassée. Un journal d'erreurs
+qui contient du bruit permanent est un journal qu'on cesse de lire.
+
+### 2026-08-23 · Indexation conditionnée au domaine, pas à la phase
+
+`robots.ts` et `sitemap.ts` lisent tous deux `isProductionSite()` : tant que `NEXT_PUBLIC_SITE_URL`
+ne pointe pas sur `transpoleq.ma`, robots interdit tout et le sitemap est vide. Les deux fichiers
+disent forcément la même chose, et aucune prévisualisation ne peut être indexée par oubli.
+`/styleguide` reste exclu même en production.
+
+### 2026-08-23 · Le tableau de dispatch de l'accueil affiche des données illustratives
+
+Le brief prévoit d'y brancher un flux réel en Phase 3. Tant que ce n'est pas fait, les lignes sont
+anonymisées (« Carrière A », « Chantier RN9 ») et la mention « Données illustratives » est dans le
+composant. Les mentions légales le répètent : le board ne reflète aucune mission réelle et n'expose
+aucune donnée client.
+
+### 2026-08-23 · Aucun client, aucun témoignage, aucune certification
+
+`content/fr/references.ts` est livré VIDE et les composants gèrent l'état vide avec une phrase qui
+dit pourquoi : rien n'est publié sans autorisation écrite. C'est plus crédible qu'une rangée de
+logos gris, et cela évite d'avoir à retirer un nom en urgence.

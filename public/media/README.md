@@ -5,7 +5,11 @@
 > exactement la crédibilité que le site cherche à établir.
 
 Tant qu'un fichier manque, la page affiche un espace réservé aux bonnes proportions : la mise en
-page ne bouge pas quand la vraie image arrive, et le trou reste visible.
+page ne bouge pas quand la vraie image arrive, et le trou reste visible. Aucun fichier absent n'est
+demandé au serveur — un emplacement réservé n'est pas une image cassée.
+
+Pour activer une photo une fois livrée : passer `available` à `true` sur le `MediaFrame`
+correspondant.
 
 ## Traitement commun
 
@@ -38,6 +42,10 @@ Toutes les images sont étalonnées de la même façon, sinon la page se lit com
 
 La vidéo est chargée après le LCP, en `preload="none"`. Elle ne doit jamais être le seul porteur
 d'une information.
+
+**À la livraison des trois fichiers**, passer `HERO_MEDIA_AVAILABLE` à `true` dans
+`components/sections/HeroVideo.tsx`. Tant qu'ils manquent, le composant ne les demande pas : trois
+404 à chaque chargement de page finissent par rendre le journal d'erreurs inutilisable.
 
 ## 2. Photos de section — `sections/`
 

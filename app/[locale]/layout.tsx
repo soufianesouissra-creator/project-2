@@ -8,6 +8,7 @@ import { Header } from '@/components/sections/Header'
 import { Footer } from '@/components/sections/Footer'
 import { SmoothScroll } from '@/components/motion/SmoothScroll'
 import { ToastProvider } from '@/components/ui/Toast'
+import { CookieBanner } from '@/components/sections/CookieBanner'
 import '../globals.css'
 
 export const viewport: Viewport = {
@@ -28,9 +29,9 @@ export const metadata: Metadata = {
   },
   description:
     'TRANSPOLEQ transporte matériaux, enrobés et engins pour les chantiers d’infrastructure au Maroc.',
-  // Phase 0 : rien n'est public, donc rien n'est indexable. À rouvrir en
-  // Phase 1, page par page, via l'API Metadata.
-  robots: { index: false, follow: false },
+  // L'indexabilité est décidée page par page par `pageMetadata`, qui la
+  // conditionne au domaine servi : rien n'est indexable tant que
+  // NEXT_PUBLIC_SITE_URL ne pointe pas sur le domaine de production.
 }
 
 export default async function LocaleLayout({
@@ -59,6 +60,7 @@ export default async function LocaleLayout({
             <Header />
             <main id="contenu">{children}</main>
             <Footer />
+            <CookieBanner />
           </ToastProvider>
         </NextIntlClientProvider>
       </body>

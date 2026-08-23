@@ -1,14 +1,22 @@
 import type { MetadataRoute } from 'next'
+import { SITE_URL, isProductionSite } from '@/lib/seo'
 
 /**
- * Phase 0 : le site n'est pas public. Tout est fermé à l'indexation, y compris
- * sur les déploiements de prévisualisation.
+ * Tant que le site n'est pas servi depuis son domaine de production, TOUT est
+ * fermé : une prévisualisation indexée est une erreur qu'on ne rattrape pas
+ * vite.
  *
- * Phase 1 : ouvrir les pages publiques et laisser `/styleguide` fermé — cette
- * page reste un outil de développement, jamais un contenu.
+ * En production, seules deux zones restent fermées : `/styleguide`, qui est un
+ * outil de développement, et `/api`.
  */
 export default function robots(): MetadataRoute.Robots {
+  if (!isProductionSite()) {
+    return { rules: { userAgent: '*', disallow: '/' } }
+  }
+
   return {
-    rules: { userAgent: '*', disallow: '/' },
+    rules: { userAgent: '*', allow: '/', disallow: ['/styleguide', '/api/'] },
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   }
 }
