@@ -6,7 +6,7 @@ import { setRequestLocale } from 'next-intl/server'
 import { LegalLayout, LegalList, LegalSection } from '@/components/sections/LegalLayout'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { CONTACT, LEGAL } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 import { ph } from '@/content/placeholders'
 
 export async function generateMetadata({
@@ -41,6 +41,8 @@ export default async function ConfidentialitePage({
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { CONTACT, LEGAL } = getContent(locale)
 
   return (
     <LegalLayout title="Politique de confidentialité" updated="à compléter">

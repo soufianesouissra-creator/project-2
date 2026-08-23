@@ -9,7 +9,7 @@ import { KeyFigures } from '@/components/sections/KeyFigures'
 import { ButtonLink } from '@/components/ui/Button'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { MILESTONES, VALUES } from '@/content/fr/group'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -31,6 +31,8 @@ export default async function GroupePage({ params }: { params: Promise<{ locale:
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { MILESTONES, VALUES } = getContent(locale)
 
   return (
     <>

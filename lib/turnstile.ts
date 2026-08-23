@@ -35,7 +35,13 @@ export async function verifyTurnstile(token: string | undefined, remoteIp?: stri
   }
 }
 
-/** La protection est-elle réellement active ? Affiché sur /styleguide. */
+/**
+ * La protection est-elle réellement active ?
+ *
+ * La clé de SITE est publique et doit donc porter le préfixe `NEXT_PUBLIC_` ;
+ * la clé secrète ne le porte surtout pas. Les deux noms sont vérifiés ici,
+ * sinon cette fonction rendrait `false` en permanence.
+ */
 export function turnstileConfigured(): boolean {
-  return Boolean(process.env.TURNSTILE_SECRET_KEY && process.env.TURNSTILE_SITE_KEY)
+  return Boolean(process.env.TURNSTILE_SECRET_KEY && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY)
 }

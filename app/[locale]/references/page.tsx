@@ -9,8 +9,7 @@ import { Table } from '@/components/ui/Table'
 import { ButtonLink } from '@/components/ui/Button'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { PROJECTS, TESTIMONIALS } from '@/content/fr/references'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -40,6 +39,8 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { PROJECTS, TESTIMONIALS, CONTACT } = getContent(locale)
 
   const hasProjects = PROJECTS.length > 0
 

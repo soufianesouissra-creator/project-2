@@ -8,7 +8,7 @@ import { ContactForm } from '@/components/sections/ContactForm'
 import { IconPhone, IconWhatsapp, IconPin, IconClock } from '@/components/icons'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -29,6 +29,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { CONTACT } = getContent(locale)
 
   return (
     <>

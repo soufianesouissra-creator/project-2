@@ -1,6 +1,8 @@
 import { Card } from '@/components/ui/Card'
 import { Link } from '@/lib/navigation'
-import { SERVICES, type ServiceIconKey } from '@/content/fr/services'
+import type { ServiceIconKey } from '@/content/fr/services'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import {
   IconAsphalt,
   IconDriver,
@@ -27,6 +29,8 @@ const ICONS: Record<ServiceIconKey, typeof IconTipper> = {
  * séquence est réelle.
  */
 export function ServicesGrid({ heading = 'Ce que nous transportons' }: { readonly heading?: string }) {
+  const locale = useLocale()
+  const { SERVICES } = getContent(locale)
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="services">
       <div className="flex flex-wrap items-end justify-between gap-4">

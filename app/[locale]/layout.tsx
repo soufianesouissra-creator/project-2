@@ -9,6 +9,7 @@ import { Footer } from '@/components/sections/Footer'
 import { SmoothScroll } from '@/components/motion/SmoothScroll'
 import { ToastProvider } from '@/components/ui/Toast'
 import { CookieBanner } from '@/components/sections/CookieBanner'
+import { Analytics } from '@/components/Analytics'
 import '../globals.css'
 
 export const viewport: Viewport = {
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
             <main id="contenu">{children}</main>
             <Footer />
             <CookieBanner />
+            <Analytics />
           </ToastProvider>
         </NextIntlClientProvider>
       </body>

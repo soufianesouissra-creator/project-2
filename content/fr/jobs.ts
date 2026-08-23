@@ -35,8 +35,14 @@ export const WHY_JOIN: readonly string[] = [
   'Une couverture sociale et une assurance complètes.',
 ]
 
+export interface FaqItem {
+  readonly id: string
+  readonly question: string
+  readonly answer: string
+}
+
 /** FAQ chauffeur. Les réponses engagent l'entreprise : à valider. */
-export const DRIVER_FAQ = [
+export const DRIVER_FAQ: readonly FaqItem[] = [
   {
     id: 'permis',
     question: 'Quels permis sont requis ?',
@@ -57,4 +63,4 @@ export const DRIVER_FAQ = [
     question: 'Le logement en déplacement est-il pris en charge ?',
     answer: 'À valider par les RH avant publication.',
   },
-] as const
+]

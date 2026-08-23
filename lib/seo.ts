@@ -26,6 +26,18 @@ export function localizedPath(path: string, locale: Locale): string {
   return locale === routing.defaultLocale ? clean || '/' : `/${locale}${clean}`
 }
 
+/**
+ * URL de la vignette Open Graph d'une page.
+ *
+ * La convention de fichier de Next (`opengraph-image.tsx`) ne s'applique qu'à
+ * la RACINE de son segment : `/flotte` et `/services/citernes` se partageaient
+ * sans vignette. Chaque page pointe donc sur `/og` avec son propre titre.
+ */
+export function ogImageUrl(title: string, locale: Locale): string {
+  const params = new URLSearchParams({ title, locale })
+  return `${SITE_URL}/og?${params.toString()}`
+}
+
 export interface PageSeo {
   readonly title: string
   readonly description: string
@@ -65,7 +77,14 @@ export function pageMetadata({ title, description, path, locale, noindex, image 
       description,
       url: canonical,
       locale: locale === 'fr' ? 'fr_MA' : locale,
-      images: image ? [{ url: image }] : undefined,
+      images: [
+        {
+          url: image ?? ogImageUrl(title, locale),
+          width: 1200,
+          height: 630,
+          alt: `TRANSPOLEQ — ${title}`,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

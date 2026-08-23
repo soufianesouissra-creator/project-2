@@ -10,7 +10,7 @@ import { Select } from '@/components/ui/Select'
 import { Textarea } from '@/components/ui/Textarea'
 import { Stepper } from '@/components/ui/Stepper'
 import { Honeypot, Turnstile } from './Turnstile'
-import { SERVICE_OPTIONS } from '@/content/fr/services'
+
 import {
   FREQUENCIES,
   FREQUENCY_LABELS,
@@ -18,7 +18,8 @@ import {
   quoteSchema,
   type FieldErrors,
 } from '@/lib/validation'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { ph } from '@/content/placeholders'
 import { cn } from '@/lib/cn'
 
@@ -69,6 +70,8 @@ const EMPTY: Record<FieldName, string> = {
  * masquées : c'est ce qui permet à un seul `FormData` de tout porter à l'envoi.
  */
 export function QuoteForm() {
+  const locale = useLocale()
+  const { SERVICE_OPTIONS } = getContent(locale)
   const params = useSearchParams()
   const [state, action, pending] = useActionState(submitQuote, IDLE)
   const [step, setStep] = useState(0)
@@ -256,6 +259,8 @@ export function QuoteForm() {
 }
 
 function QuoteSuccess({ delivered }: { readonly delivered: boolean }) {
+  const locale = useLocale()
+  const { CONTACT } = getContent(locale)
   return (
     <div className="max-w-2xl" role="status">
       <p className="eyebrow text-mist">Demande envoyée</p>

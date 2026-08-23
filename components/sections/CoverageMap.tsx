@@ -1,4 +1,5 @@
-import { COVERAGE_INTRO, REGIONS } from '@/content/fr/coverage'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { Chip } from '@/components/ui/Chip'
 
 /**
@@ -14,6 +15,8 @@ import { Chip } from '@/components/ui/Chip'
  * confirmé : une carte qui colorie tout le royaume ne dit rien.
  */
 export function CoverageMap() {
+  const locale = useLocale()
+  const { COVERAGE_INTRO, REGIONS } = getContent(locale)
   const confirmed = REGIONS.filter((region) => region.served === true)
   const pending = REGIONS.filter((region) => region.served === null)
 

@@ -5,7 +5,8 @@ import { useRouter } from '@/lib/navigation'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
-import { SERVICE_OPTIONS } from '@/content/fr/services'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 
 /**
  * Bande devis finale (§6.1.11).
@@ -19,6 +20,8 @@ import { SERVICE_OPTIONS } from '@/content/fr/services'
  * tonnage doit pouvoir avancer quand même.
  */
 export function QuoteBand() {
+  const locale = useLocale()
+  const { SERVICE_OPTIONS } = getContent(locale)
   const router = useRouter()
   const [service, setService] = useState('')
   const [material, setMaterial] = useState('')

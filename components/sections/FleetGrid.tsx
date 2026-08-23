@@ -1,7 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { FLEET } from '@/content/fr/fleet'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { FLEET_SILHOUETTES } from '@/components/icons/FleetSilhouettes'
 import { Chip } from '@/components/ui/Chip'
 import { cn } from '@/lib/cn'
@@ -23,12 +24,14 @@ const FILTERS = [
 ] as const
 
 export function FleetGrid() {
+  const locale = useLocale()
+  const { FLEET } = getContent(locale)
   const [active, setActive] = useState<string>('tous')
 
   const visible = useMemo(() => {
     const filter = FILTERS.find((f) => f.id === active) ?? FILTERS[0]
     return FLEET.filter((category) => filter.match(category.key))
-  }, [active])
+  }, [active, FLEET])
 
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="categories">

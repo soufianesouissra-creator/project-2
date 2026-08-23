@@ -1,0 +1,53 @@
+{
+  "common": {
+    "requestQuote": "Request a quote",
+    "viewFleet": "See the fleet",
+    "viewJobs": "See open roles",
+    "sendRequest": "Send the request",
+    "sendMessage": "Send the message",
+    "apply": "Apply",
+    "nextStep": "Next step",
+    "back": "Back",
+    "whatsapp": "WhatsApp",
+    "skipToContent": "Skip to content",
+    "illustrativeData": "Illustrative data"
+  },
+  "header": {
+    "homeLabel": "TRANSPOLEQ, home",
+    "mainNav": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "contact": "Contact",
+    "legal": "Legal",
+    "language": "Language",
+    "soon": "soon",
+    "legalInfo": "Legal information"
+  },
+  "toast": {
+    "quoteSent": "Request sent",
+    "applicationSent": "Application sent",
+    "messageSent": "Message sent"
+  },
+  "error": {
+    "required": "This field is required.",
+    "phone": "Enter a valid phone number (e.g. 06 12 34 56 78).",
+    "fileTooLarge": "The file is larger than 5 MB.",
+    "filePdfOnly": "Accepted format: PDF.",
+    "sendFailed": "Sending failed. Try again or call {phone}."
+  },
+  "empty": {
+    "noJobs": "No open roles at the moment. Send a speculative application.",
+    "noReferences": "No reference matches this filter."
+  },
+  "cookies": {
+    "message": "We use anonymous audience measurement.",
+    "accept": "Accept",
+    "refuse": "Decline"
+  },
+  "notFound": {
+    "title": "This page is not on our route.",
+    "home": "Back to home"
+  }
+}

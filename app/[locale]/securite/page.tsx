@@ -9,13 +9,7 @@ import { Card } from '@/components/ui/Card'
 import { IconDocument, IconShield } from '@/components/icons'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import {
-  AVAILABLE_DOCUMENTS,
-  CERTIFICATIONS,
-  COMMITMENTS,
-  SAFETY_BLOCKS,
-} from '@/content/fr/safety'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -37,6 +31,8 @@ export default async function SecuritePage({ params }: { params: Promise<{ local
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { AVAILABLE_DOCUMENTS, CERTIFICATIONS, COMMITMENTS, SAFETY_BLOCKS, CONTACT } = getContent(locale)
 
   return (
     <>

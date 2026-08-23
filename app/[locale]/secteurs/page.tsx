@@ -9,8 +9,7 @@ import { Link } from '@/lib/navigation'
 import { FLEET_SILHOUETTES } from '@/components/icons/FleetSilhouettes'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { SECTORS } from '@/content/fr/sectors'
-import { SERVICES } from '@/content/fr/services'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -32,6 +31,8 @@ export default async function SecteursPage({ params }: { params: Promise<{ local
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { SECTORS, SERVICES } = getContent(locale)
 
   return (
     <>

@@ -9,7 +9,8 @@ import { Textarea } from '@/components/ui/Textarea'
 import { FileInput } from '@/components/ui/FileInput'
 import { Honeypot, Turnstile } from './Turnstile'
 import { CV_MAX_BYTES } from '@/lib/validation'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 
 type FieldName = 'name' | 'phone' | 'email' | 'position' | 'licences' | 'message'
 
@@ -28,6 +29,8 @@ const EMPTY: Record<FieldName, string> = {
  * formulaire à zéro quand son action se termine, refus compris.
  */
 export function ApplicationForm({ positions }: { readonly positions?: readonly string[] }) {
+  const locale = useLocale()
+  const { CONTACT } = getContent(locale)
   const [state, action, pending] = useActionState(submitApplication, IDLE)
   const [values, setValues] = useState<Record<FieldName, string>>(EMPTY)
   const [fileError, setFileError] = useState<string>()

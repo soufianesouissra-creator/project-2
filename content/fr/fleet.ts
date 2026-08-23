@@ -85,7 +85,12 @@ export function fleetByKeys(keys: readonly FleetCategoryKey[]): readonly FleetCa
 }
 
 /** Blocs de la page Flotte (§6.3). */
-export const WORKSHOP = {
+export interface FleetBlock {
+  readonly title: string
+  readonly points: readonly string[]
+}
+
+export const WORKSHOP: FleetBlock = {
   title: 'Atelier & maintenance',
   points: [
     'Plan de maintenance préventive par véhicule, planifié et documenté.',
@@ -93,17 +98,17 @@ export const WORKSHOP = {
     'Gestion des pneumatiques : contrôle de pression et de profondeur, recreusage suivi.',
     `Taux d’immobilisation : ${ph('TAUX_IMMOBILISATION')} %.`,
   ],
-} as const
+}
 
-export const RENEWAL = {
+export const RENEWAL: FleetBlock = {
   title: 'Renouvellement',
   points: [
     `Règle de renouvellement : ${ph('POLITIQUE_RENOUVELLEMENT')}.`,
     'Un camion sorti du parc n’est pas remplacé par un plus vieux.',
   ],
-} as const
+}
 
-export const TELEMATICS = {
+export const TELEMATICS: FleetBlock = {
   title: 'Équipement télématique',
   points: [
     'Un traceur 4G sur chaque camion, sans exception.',
@@ -111,4 +116,4 @@ export const TELEMATICS = {
     'Suivi de consommation carburant, par véhicule et par chauffeur.',
     'Comportement de conduite : vitesse, freinages, temps de conduite.',
   ],
-} as const
+}

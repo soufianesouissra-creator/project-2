@@ -12,14 +12,15 @@ import { ButtonLink } from '@/components/ui/Button'
 import { JsonLd } from '@/components/JsonLd'
 import { FLEET_SILHOUETTES } from '@/components/icons/FleetSilhouettes'
 import { breadcrumbSchema, serviceSchema } from '@/lib/schema'
+import { findService, fleetFor, getContent } from '@/lib/content'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { SERVICES, serviceBySlug } from '@/content/fr/services'
-import { fleetByKeys } from '@/content/fr/fleet'
 
 export function generateStaticParams() {
+  // Les slugs sont communs aux langues : une URL de service ne change pas d'une
+  // langue à l'autre, seul son contenu change.
   return routing.locales.flatMap((locale) =>
-    SERVICES.map((service) => ({ locale, slug: service.slug })),
+    getContent(locale).SERVICES.map((service) => ({ locale, slug: service.slug })),
   )
 }
 
@@ -30,7 +31,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
-  const service = serviceBySlug(slug)
+  const service = findService(locale, slug)
   if (!service) notFound()
 
   return pageMetadata({
@@ -59,10 +60,10 @@ export default async function ServicePage({
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
 
-  const service = serviceBySlug(slug)
+  const service = findService(locale, slug)
   if (!service) notFound()
 
-  const fleet = fleetByKeys(service.fleet)
+  const fleet = fleetFor(locale, service.fleet)
 
   return (
     <>

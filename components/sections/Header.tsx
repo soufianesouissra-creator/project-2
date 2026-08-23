@@ -3,7 +3,8 @@
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { Link, usePathname } from '@/lib/navigation'
-import { MAIN_NAV, CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { ButtonLink } from '@/components/ui/Button'
 import { IconPhone, IconWhatsapp } from '@/components/icons'
 import { Wordmark } from './Wordmark'
@@ -40,6 +41,8 @@ function opensOnDarkBand(pathname: string): boolean {
  */
 export function Header({ overHero = false }: { readonly overHero?: boolean }) {
   const t = useTranslations()
+  const locale = useLocale()
+  const { MAIN_NAV, CONTACT } = getContent(locale)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
@@ -159,6 +162,8 @@ export function Header({ overHero = false }: { readonly overHero?: boolean }) {
  */
 function MobileMenu() {
   const t = useTranslations()
+  const locale = useLocale()
+  const { MAIN_NAV, CONTACT } = getContent(locale)
   return (
     <div
       id="menu-mobile"

@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Honeypot, Turnstile } from './Turnstile'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 
 type FieldName = 'name' | 'company' | 'phone' | 'email' | 'message'
 
@@ -25,6 +26,8 @@ const EMPTY: Record<FieldName, string> = { name: '', company: '', phone: '', ema
  * message qu'il venait d'écrire — et ne le réécrivait pas.
  */
 export function ContactForm() {
+  const locale = useLocale()
+  const { CONTACT } = getContent(locale)
   const [state, action, pending] = useActionState(submitContact, IDLE)
   const [values, setValues] = useState<Record<FieldName, string>>(EMPTY)
 

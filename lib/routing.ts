@@ -18,7 +18,7 @@ export const LOCALE_META = {
 export type LocaleCode = keyof typeof LOCALE_META
 
 export const routing = defineRouting({
-  locales: ['fr'],
+  locales: ['fr', 'en'],
   defaultLocale: 'fr',
   localePrefix: 'as-needed',
 })
@@ -26,11 +26,15 @@ export const routing = defineRouting({
 export type Locale = (typeof routing.locales)[number]
 
 /**
- * Langues annoncées dans le sélecteur mais pas encore livrées (Phase 3).
+ * Langues annoncées dans le sélecteur mais pas encore livrées.
  * Elles s'affichent désactivées, avec la mention « bientôt » — on ne propose
  * pas un lien qui renverrait un 404.
+ *
+ * L'arabe reste à faire : `LOCALE_META` porte déjà son `dir: 'rtl'`, et le CSS
+ * n'emploie que des propriétés logiques, donc le jour venu il ne manquera que
+ * la traduction.
  */
-export const PLANNED_LOCALES: readonly LocaleCode[] = ['en']
+export const PLANNED_LOCALES: readonly LocaleCode[] = ['ar']
 
 export function localeMeta(locale: string) {
   return LOCALE_META[locale as LocaleCode] ?? LOCALE_META.fr

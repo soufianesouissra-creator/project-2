@@ -1,5 +1,6 @@
 import { Marquee } from '@/components/motion/Marquee'
-import { CLIENT_LOGOS, TESTIMONIALS } from '@/content/fr/references'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { Link } from '@/lib/navigation'
 
 /**
@@ -10,6 +11,8 @@ import { Link } from '@/lib/navigation'
  * carrousel vide. Un état vide honnête vaut mieux qu'une preuve fabriquée.
  */
 export function ReferencesMarquee() {
+  const locale = useLocale()
+  const { CLIENT_LOGOS, TESTIMONIALS } = getContent(locale)
   const hasLogos = CLIENT_LOGOS.length > 0
   const hasTestimonials = TESTIMONIALS.length > 0
 

@@ -11,7 +11,7 @@ import { Chip } from '@/components/ui/Chip'
 import { jobPostingSchema } from '@/lib/schema'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { DRIVER_FAQ, JOBS, WHY_JOIN } from '@/content/fr/jobs'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -40,6 +40,8 @@ export default async function CarrieresPage({ params }: { params: Promise<{ loca
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { DRIVER_FAQ, JOBS, WHY_JOIN } = getContent(locale)
 
   const hasJobs = JOBS.length > 0
 

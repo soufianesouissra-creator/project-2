@@ -1,5 +1,6 @@
 import { Counter } from '@/components/motion/Counter'
-import { KEY_FIGURES } from '@/content/fr/figures'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { cn } from '@/lib/cn'
 
 /**
@@ -14,6 +15,8 @@ import { cn } from '@/lib/cn'
  * compteur qui anime « [N_CAMIONS] » serait un mensonge animé.
  */
 export function KeyFigures() {
+  const locale = useLocale()
+  const { KEY_FIGURES } = getContent(locale)
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="chiffres-cles">
       <h2 id="chiffres-cles" className="sr-only">

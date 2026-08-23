@@ -1,7 +1,8 @@
 import { Link } from '@/lib/navigation'
 import { ButtonLink } from '@/components/ui/Button'
 import { PinnedHorizontal } from '@/components/motion/PinnedHorizontal'
-import { FLEET } from '@/content/fr/fleet'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { FLEET_SILHOUETTES } from '@/components/icons/FleetSilhouettes'
 
 /**
@@ -12,6 +13,8 @@ import { FLEET_SILHOUETTES } from '@/components/icons/FleetSilhouettes'
  * avance. C'est la seule raison pour laquelle il existe.
  */
 export function FleetConvoy() {
+  const locale = useLocale()
+  const { FLEET } = getContent(locale)
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="flotte">
       <div className="flex flex-wrap items-end justify-between gap-4">

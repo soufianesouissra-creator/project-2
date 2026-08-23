@@ -1,4 +1,5 @@
-import { GROUP_CHAIN, GROUP_ENTITIES } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { ButtonLink } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 
@@ -12,6 +13,8 @@ import { cn } from '@/lib/cn'
  * contraintes de chantier parce qu'elle vit dans un groupe de travaux publics.
  */
 export function GroupChain() {
+  const locale = useLocale()
+  const { GROUP_CHAIN, GROUP_ENTITIES } = getContent(locale)
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="groupe">
       <p className="eyebrow text-mist">Groupe ALEQ</p>

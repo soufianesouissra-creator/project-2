@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { Link } from '@/lib/navigation'
-import { CONTACT, FOOTER_NAV, GROUP_ENTITIES, LEGAL, LEGAL_NAV } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 import { IconPhone, IconWhatsapp } from '@/components/icons'
-import { LOCALE_META, PLANNED_LOCALES, routing } from '@/lib/routing'
+import { LanguageSwitch } from './LanguageSwitch'
 
 /**
  * Pied de page — dernière bande `--asphalt` de la page.
@@ -12,6 +12,8 @@ import { LOCALE_META, PLANNED_LOCALES, routing } from '@/lib/routing'
  */
 export function Footer() {
   const t = useTranslations()
+  const locale = useLocale()
+  const { CONTACT, FOOTER_NAV, GROUP_ENTITIES, LEGAL, LEGAL_NAV } = getContent(locale)
   return (
     <footer className="bg-asphalt text-concrete">
       <div className="site-container py-14 lg:py-20">
@@ -100,38 +102,5 @@ export function Footer() {
       </div>
 
     </footer>
-  )
-}
-
-/**
- * Sélecteur de langue.
- *
- * Les langues prévues mais pas encore livrées s'affichent désactivées, avec la
- * mention « bientôt ». On ne propose pas un lien qui renverrait un 404 — c'est
- * le même principe que le bouton « Espace client » de la page Suivi.
- */
-function LanguageSwitch() {
-  const t = useTranslations()
-  return (
-    <div className="mt-6">
-      <h3 className="eyebrow text-mist mb-2">{t('footer.language')}</h3>
-      <ul className="flex items-center gap-2 font-mono text-xs">
-        {routing.locales.map((locale) => (
-          <li key={locale}>
-            <span className="border-marking text-marking rounded-[2px] border px-2 py-1" aria-current="true">
-              {LOCALE_META[locale].short}
-            </span>
-          </li>
-        ))}
-        {PLANNED_LOCALES.map((locale) => (
-          <li key={locale}>
-            <span className="border-mist/40 text-mist rounded-[2px] border px-2 py-1">
-              {LOCALE_META[locale].short}
-              <span className="ms-1.5 lowercase">{t('footer.soon')}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
   )
 }

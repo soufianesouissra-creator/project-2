@@ -12,7 +12,7 @@ import { JsonLd } from '@/components/JsonLd'
 import { breadcrumbSchema } from '@/lib/schema'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { SERVICES } from '@/content/fr/services'
+import { getContent } from '@/lib/content'
 import { cn } from '@/lib/cn'
 
 export async function generateMetadata({
@@ -42,6 +42,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { SERVICES } = getContent(locale)
 
   return (
     <>

@@ -8,7 +8,7 @@ import { PageHero } from '@/components/sections/PageHero'
 import { QuoteForm } from '@/components/sections/QuoteForm'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { CONTACT } from '@/content/fr/site'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -38,6 +38,8 @@ export default async function DevisPage({ params }: { params: Promise<{ locale: 
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { CONTACT } = getContent(locale)
 
   return (
     <>

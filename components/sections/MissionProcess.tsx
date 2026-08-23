@@ -1,4 +1,5 @@
-import { MISSION_STEPS } from '@/content/fr/mission'
+import { getContent } from '@/lib/content'
+import { useLocale } from 'next-intl'
 import { PinnedHorizontal } from '@/components/motion/PinnedHorizontal'
 import { cn } from '@/lib/cn'
 
@@ -21,6 +22,8 @@ export function MissionProcess({
   readonly heading?: string
   readonly intro?: string
 }) {
+  const locale = useLocale()
+  const { MISSION_STEPS } = getContent(locale)
   return (
     <section className="bg-limestone py-16 lg:py-24" aria-labelledby="mission">
       <div className="site-container">

@@ -9,7 +9,7 @@ import { FleetGrid } from '@/components/sections/FleetGrid'
 import { Card } from '@/components/ui/Card'
 import { pageMetadata } from '@/lib/seo'
 import { routing } from '@/lib/routing'
-import { RENEWAL, TELEMATICS, WORKSHOP } from '@/content/fr/fleet'
+import { getContent } from '@/lib/content'
 
 export async function generateMetadata({
   params,
@@ -31,6 +31,8 @@ export default async function FlottePage({ params }: { params: Promise<{ locale:
   const { locale } = await params
   if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
+
+  const { RENEWAL, TELEMATICS, WORKSHOP } = getContent(locale)
 
   const blocks = [WORKSHOP, RENEWAL, TELEMATICS]
 
