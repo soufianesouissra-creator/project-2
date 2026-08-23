@@ -33,7 +33,9 @@ export function Accordion({
             {item.question}
             <span
               aria-hidden
-              className="border-ink/25 text-ink relative size-6 shrink-0 rounded-[2px] border transition-colors group-open:border-marking group-open:text-marking"
+              /* Seul le CONTOUR passe au jaune à l'ouverture : le signe
+                 lui-même reste à l'encre, sinon il tombe à 1,66:1 sur clair. */
+              className="border-ink/25 text-ink relative size-6 shrink-0 rounded-[2px] border transition-colors group-open:border-marking"
             >
               <span className="absolute start-1/2 top-1/2 h-px w-2.5 -translate-x-1/2 -translate-y-1/2 bg-current" />
               <span className="absolute start-1/2 top-1/2 h-2.5 w-px -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />

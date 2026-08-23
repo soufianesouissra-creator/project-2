@@ -133,7 +133,7 @@ export default async function ServicePage({
                   <svg
                     aria-hidden
                     viewBox="0 0 20 20"
-                    className="text-marking mt-1 size-4 shrink-0"
+                    className="text-ink/70 mt-1 size-4 shrink-0"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth={2.5}

@@ -53,7 +53,7 @@ export default async function SecuritePage({ params }: { params: Promise<{ local
         <ul className="mt-8 flex max-w-[68ch] flex-col">
           {COMMITMENTS.map((commitment) => (
             <li key={commitment} className="border-ink/10 flex items-start gap-4 border-b py-4">
-              <IconShield className="text-marking mt-0.5 size-5 shrink-0" />
+              <IconShield className="text-ink/70 mt-0.5 size-5 shrink-0" />
               <span className="text-ink text-lg">{commitment}</span>
             </li>
           ))}

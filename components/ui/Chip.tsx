@@ -5,7 +5,10 @@ export type ChipTone = 'neutral' | 'active' | 'muted' | 'alert'
 
 const TONES: Record<ChipTone, string> = {
   neutral: 'border-ink/25 text-ink',
-  active: 'border-marking text-marking',
+  // Contour jaune, texte à l'encre. Le jaune de marquage en TEXTE sur du clair
+  // donne 1,66:1 : invisible, et contraire à la règle du brief. Le contour
+  // suffit à dire « actif », et le libellé reste lisible.
+  active: 'border-marking text-ink',
   muted: 'border-mist-ink/50 text-mist-ink',
   alert: 'border-signal text-signal',
 }
