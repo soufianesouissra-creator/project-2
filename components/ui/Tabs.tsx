@@ -56,7 +56,7 @@ export function Tabs({ items, className }: { readonly items: readonly TabItem[];
             onKeyDown={(event) => onKeyDown(event, index)}
             className={cn(
               '-mb-px border-b-2 px-4 py-2.5 text-sm font-medium transition-colors',
-              index === active ? 'border-marking text-ink' : 'text-mist hover:text-ink border-transparent',
+              index === active ? 'border-marking text-ink' : 'text-mist-ink hover:text-ink border-transparent',
             )}
           >
             {item.label}

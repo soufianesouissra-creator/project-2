@@ -37,7 +37,7 @@ export function ContactForm() {
   if (state.status === 'success') {
     return (
       <div role="status" className="max-w-xl">
-        <p className="eyebrow text-mist">Message envoyé</p>
+        <p className="eyebrow text-mist-ink">Message envoyé</p>
         <h2 className="font-display font-expanded text-ink mt-4 text-2xl font-bold">
           Message envoyé.
         </h2>
@@ -97,7 +97,7 @@ export function ContactForm() {
         <Button type="submit" size="lg" disabled={pending}>
           {pending ? 'Envoi…' : 'Envoyer le message'}
         </Button>
-        <p className="text-mist font-mono text-xs">Ou appelez le {CONTACT.phone}</p>
+        <p className="text-mist-ink font-mono text-xs">Ou appelez le {CONTACT.phone}</p>
       </div>
     </form>
   )

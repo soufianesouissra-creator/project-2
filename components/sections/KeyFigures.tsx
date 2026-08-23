@@ -40,18 +40,21 @@ export function KeyFigures() {
                    chiffre : en mono, plus petit, et sécable. `[TONNAGE_ANNUEL]`
                    en display 64 px est un mot insécable qui faisait déborder la
                    grille des chiffres à 390 px. */
-                <span className="text-mist font-mono text-base break-all">{figure.value}</span>
+                <span className="text-mist-ink font-mono text-base break-all">{figure.value}</span>
               ) : typeof figure.value === 'number' ? (
                 <Counter value={figure.value} />
               ) : (
                 figure.value
               )}
               {figure.unit && !figure.pending ? (
-                <span className="text-mist ms-1 text-xl">{figure.unit}</span>
+                <span className="text-mist-ink ms-1 text-xl">{figure.unit}</span>
               ) : null}
             </dd>
             <dt className="text-ink/80 mt-3 max-w-[22ch] text-sm">{figure.label}</dt>
-            <p className="text-mist mt-1.5 font-mono text-xs">{figure.note}</p>
+            {/* La note est un second `dd` : dans une liste de définitions,
+                `div` n'accepte que `dt` et `dd`, et un `p` y rendait la
+                structure invalide. */}
+            <dd className="text-mist-ink mt-1.5 font-mono text-xs">{figure.note}</dd>
           </div>
         ))}
       </dl>

@@ -71,7 +71,7 @@ export default async function FlottePage({ params }: { params: Promise<{ locale:
               </Card>
             ))}
           </div>
-          <p className="text-mist mt-8 max-w-[68ch] font-mono text-xs">
+          <p className="text-mist-ink mt-8 max-w-[68ch] font-mono text-xs">
             Les catégories listées sont celles que TRANSPOLEQ exploite. Une catégorie non exploitée est
             retirée de cette page plutôt que laissée à zéro : une ligne vide ferait croire à une flotte
             qui n’existe pas.

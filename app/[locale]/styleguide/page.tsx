@@ -61,7 +61,8 @@ const COLORS = [
   ['--limestone', '#F7F6F3', 'Cartes, champs de formulaire sur clair.', 'bg-limestone'],
   ['--marking', '#F5B800', 'Trait, contour, puce, focus, CTA primaire. Jamais un grand aplat, jamais du texte sur clair.', 'bg-marking'],
   ['--ink', '#121315', 'Texte sur clair.', 'bg-ink'],
-  ['--mist', '#8E949A', 'Métadonnée, légende, aide.', 'bg-mist'],
+  ['--mist', '#8E949A', 'Métadonnée sur fond SOMBRE. 5,52:1 sur --asphalt.', 'bg-mist'],
+  ['--mist-ink', '#63686E', 'Métadonnée sur fond CLAIR. 4,51:1 sur --concrete. Aucun gris unique ne peut tenir les deux fonds.', 'bg-mist-ink'],
   ['--signal', '#C8371F', 'Erreur et urgence. Jamais décoratif.', 'bg-signal'],
 ] as const
 
@@ -86,7 +87,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
     <div className="pt-16 lg:pt-20">
       <header className="bg-asphalt text-concrete">
         <div className="site-container py-16 lg:py-24">
-          <p className="eyebrow text-mist">Outil de développement · noindex</p>
+          <p className="eyebrow text-mist-ink">Outil de développement · noindex</p>
           <h1 className="font-display font-expanded mt-4 text-4xl font-bold lg:text-5xl">
             Système visuel
           </h1>
@@ -98,7 +99,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {SECTIONS.map(([id, label]) => (
                 <li key={id}>
-                  <a href={`#${id}`} className="text-mist hover:text-marking font-mono text-xs transition-colors">
+                  <a href={`#${id}`} className="text-mist-ink hover:text-marking font-mono text-xs transition-colors">
                     {label}
                   </a>
                 </li>
@@ -109,14 +110,14 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
       </header>
 
       {/* ── Couleur ──────────────────────────────────────────────────────── */}
-      <Section id="couleur" title="Couleur" note="Trois règles : le jaune n’est jamais un grand aplat ni du texte sur clair ; le sombre arrive par bandes, jamais en fond global ; le signal ne décore pas.">
+      <Section id="couleur" title="Couleur" note="Trois règles : le jaune n’est jamais un grand aplat ni du texte sur clair ; le sombre arrive par bandes, jamais en fond global ; le signal ne décore pas. Et DEUX gris de métadonnée — un par fond — parce qu’un seul échouait le contraste AA sur le clair.">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {COLORS.map(([token, hex, use, bg]) => (
             <div key={token} className="border-ink/10 border">
               <div className={`h-24 ${bg}`} />
               <div className="p-4">
                 <p className="font-mono text-sm">{token}</p>
-                <p className="text-mist font-mono text-xs">{hex}</p>
+                <p className="text-mist-ink font-mono text-xs">{hex}</p>
                 <p className="text-ink/70 mt-2 text-sm">{use}</p>
               </div>
             </div>
@@ -125,14 +126,15 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
 
         <div className="mt-10 grid gap-4 lg:grid-cols-2">
           <div className="bg-concrete border-ink/10 border p-6">
-            <p className="eyebrow text-mist">Sur béton</p>
-            <p className="text-ink mt-3 text-lg">Texte principal — contraste 15,8:1</p>
-            <p className="text-mist mt-1 font-mono text-sm">Métadonnée — 3,1:1, jamais seule porteuse</p>
+            <p className="eyebrow text-mist-ink">Sur béton</p>
+            <p className="text-ink mt-3 text-lg">Texte principal — 14,90:1</p>
+            <p className="text-mist-ink mt-1 font-mono text-sm">Métadonnée — 4,51:1 (--mist-ink)</p>
           </div>
           <div className="bg-asphalt border-gravel border p-6">
-            <p className="eyebrow text-mist">Sur enrobé</p>
-            <p className="text-concrete mt-3 text-lg">Texte principal — contraste 13,7:1</p>
-            <p className="text-marking mt-1 font-mono text-sm">Marquage — 9,7:1, lisible ici, jamais sur clair</p>
+            <p className="eyebrow text-mist-ink">Sur enrobé</p>
+            <p className="text-concrete mt-3 text-lg">Texte principal — 13,56:1</p>
+            <p className="text-mist mt-1 font-mono text-sm">Métadonnée — 5,52:1 (--mist)</p>
+            <p className="text-marking mt-1 font-mono text-sm">Marquage — 9,45:1, lisible ici, jamais sur clair</p>
           </div>
         </div>
       </Section>
@@ -156,11 +158,11 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
         </h3>
         <div className="border-ink/10 mt-4 flex flex-col gap-4 border p-6">
           <div>
-            <p className="text-mist font-mono text-xs">wdth 125 — lettrage de bâche : H1 et grands nombres</p>
+            <p className="text-mist-ink font-mono text-xs">wdth 125 — lettrage de bâche : H1 et grands nombres</p>
             <p className="font-display font-expanded text-ink text-3xl font-bold">CHAQUE TONNE À L’HEURE</p>
           </div>
           <div>
-            <p className="text-mist font-mono text-xs">wdth 82 — titres de section</p>
+            <p className="text-mist-ink font-mono text-xs">wdth 82 — titres de section</p>
             <p className="font-display font-semicondensed text-ink text-3xl font-semibold">CHAQUE TONNE À L’HEURE</p>
           </div>
         </div>
@@ -169,13 +171,13 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
         <ul className="border-ink/10 mt-4 divide-y divide-ink/10 border-y">
           {TYPE_SCALE.map(([px, className, use]) => (
             <li key={px} className="flex items-baseline gap-6 py-3">
-              <span className="text-mist w-10 shrink-0 font-mono text-xs">{px}</span>
+              <span className="text-mist-ink w-10 shrink-0 font-mono text-xs">{px}</span>
               <span className={`text-ink truncate ${className}`}>Tonnage</span>
-              <span className="text-mist ms-auto hidden font-mono text-xs sm:block">{use}</span>
+              <span className="text-mist-ink ms-auto hidden font-mono text-xs sm:block">{use}</span>
             </li>
           ))}
         </ul>
-        <p className="text-mist mt-4 font-mono text-xs">
+        <p className="text-mist-ink mt-4 font-mono text-xs">
           H1 et grands nombres sont fluides en clamp() ; le reste est fixe.
         </p>
       </Section>
@@ -188,11 +190,11 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
               key={index}
               className={`bg-marking/15 border-marking/40 h-20 border ${index >= 4 ? 'hidden lg:block' : ''}`}
             >
-              <span className="text-mist block p-1 font-mono text-[0.625rem]">{index + 1}</span>
+              <span className="text-mist-ink block p-1 font-mono text-[0.625rem]">{index + 1}</span>
             </div>
           ))}
         </div>
-        <p className="text-mist mt-4 font-mono text-xs">
+        <p className="text-mist-ink mt-4 font-mono text-xs">
           4 colonnes en dessous de 1024 px, 12 au-delà. La mesure de texte ne dépasse pas 68 caractères
           hors tableaux.
         </p>
@@ -202,11 +204,11 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
       <Section id="marquage" title="Ligne de marquage" note="Tiret 24, espace 16, épaisseur 2. Le seul motif décoratif récurrent du site : séparateurs, timeline, itinéraires, nav active, progression.">
         <div className="flex flex-col gap-8">
           <div>
-            <p className="text-mist mb-3 font-mono text-xs">Animée — se dessine dans le sens de la lecture</p>
+            <p className="text-mist-ink mb-3 font-mono text-xs">Animée — se dessine dans le sens de la lecture</p>
             <MarkingLine />
           </div>
           <div>
-            <p className="text-mist mb-3 font-mono text-xs">Statique (CSS, sans JavaScript)</p>
+            <p className="text-mist-ink mb-3 font-mono text-xs">Statique (CSS, sans JavaScript)</p>
             <span className="marking-line-x block w-full" />
           </div>
           <div className="flex items-stretch gap-6">
@@ -227,20 +229,20 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
       >
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,34rem)]">
           <div className="min-w-0">
-            <p className="text-mist mb-3 font-mono text-xs">
+            <p className="text-mist-ink mb-3 font-mono text-xs">
               live — un statut avance toutes les 6 s, une mission entre, la plus ancienne sort
             </p>
             <DispatchBoard rows={DEMO_ROWS} incoming={INCOMING_ROWS} live />
           </div>
           <div className="min-w-0">
-            <p className="text-mist mb-3 font-mono text-xs">
+            <p className="text-mist-ink mb-3 font-mono text-xs">
               largeur du hero (~540 px), statique — camion et matériau se replient dans la colonne
               trajet plutôt que de sortir du panneau
             </p>
             <DispatchBoard rows={DEMO_ROWS} />
           </div>
         </div>
-        <p className="text-mist mt-4 max-w-[68ch] font-mono text-xs">
+        <p className="text-mist-ink mt-4 max-w-[68ch] font-mono text-xs">
           Le board répond à la largeur de son CONTENEUR, pas à celle de la fenêtre : les deux
           panneaux ci-dessus sont le même composant, à la même taille d’écran. La mention « Données
           illustratives » fait partie du composant : on ne peut pas afficher le board sans elle. Les
@@ -269,7 +271,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
           <Button>Demander un devis</Button>
           <Button variant="ghost-dark">Voir la flotte</Button>
         </div>
-        <p className="text-mist mt-4 font-mono text-xs">
+        <p className="text-mist-ink mt-4 font-mono text-xs">
           Le CTA primaire pose du texte --asphalt sur --marking (9,4:1), jamais du blanc.
         </p>
       </Section>
@@ -417,7 +419,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
             { key: 'category', header: 'Catégorie', cell: (row) => row.category },
             { key: 'use', header: 'Utilisation', cell: (row) => row.use },
             { key: 'capacity', header: 'Capacité utile', align: 'end', cell: (row) => row.capacity },
-            { key: 'count', header: 'Nombre', align: 'end', cell: (row) => <span className="text-mist">{row.count}</span> },
+            { key: 'count', header: 'Nombre', align: 'end', cell: (row) => <span className="text-mist-ink">{row.count}</span> },
           ]}
           rows={[
             { category: 'Camions bennes 8x4', use: 'Vrac courte distance', capacity: '~18–20 t', count: '[N]' },
@@ -439,7 +441,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
       <Section id="mouvement" title="Mouvement" note="Règle unique : si un mouvement n’encode rien du transport — déplacement, séquence, progression — il est supprimé.">
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="min-w-0">
-            <p className="text-mist mb-3 font-mono text-xs">Reveal — 12 px + opacité, 400 ms, une fois</p>
+            <p className="text-mist-ink mb-3 font-mono text-xs">Reveal — 12 px + opacité, 400 ms, une fois</p>
             <Reveal>
               <div className="bg-limestone border-ink/10 border p-6 text-sm">
                 Révélation par défaut de toute section.
@@ -447,23 +449,23 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
             </Reveal>
           </div>
           <div className="min-w-0">
-            <p className="text-mist mb-3 font-mono text-xs">Counter — compte une fois, à l’entrée dans le champ</p>
+            <p className="text-mist-ink mb-3 font-mono text-xs">Counter — compte une fois, à l’entrée dans le champ</p>
             <p className="font-display font-expanded text-ink text-4xl font-bold">
-              <Counter value={27.4} decimals={1} /> <span className="text-mist text-xl">t</span>
+              <Counter value={27.4} decimals={1} /> <span className="text-mist-ink text-xl">t</span>
             </p>
           </div>
           <div className="min-w-0">
-            <p className="text-mist mb-3 font-mono text-xs">Marquee — défilement continu, arrêt au survol</p>
+            <p className="text-mist-ink mb-3 font-mono text-xs">Marquee — défilement continu, arrêt au survol</p>
             <Marquee label="Exemple de défilement">
               {['Client A', 'Client B', 'Client C', 'Client D'].map((name) => (
-                <span key={name} className="text-mist font-display font-expanded text-lg font-bold">
+                <span key={name} className="text-mist-ink font-display font-expanded text-lg font-bold">
                   {name}
                 </span>
               ))}
             </Marquee>
           </div>
         </div>
-        <p className="text-mist mt-6 max-w-[68ch] font-mono text-xs">
+        <p className="text-mist-ink mt-6 max-w-[68ch] font-mono text-xs">
           Toutes ces primitives rendent leur état final immédiatement sous prefers-reduced-motion.
           Aucune information n’est portée par le mouvement seul.
         </p>
@@ -477,7 +479,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
               <div className="text-ink">
                 <Silhouette />
               </div>
-              <p className="text-mist mt-3 font-mono text-xs">{key}</p>
+              <p className="text-mist-ink mt-3 font-mono text-xs">{key}</p>
             </div>
           ))}
         </div>
@@ -489,7 +491,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
           {Object.entries(Icons).map(([name, Icon]) => (
             <li key={name} className="border-ink/10 flex flex-col items-center gap-2 border p-4">
               <Icon className="text-ink size-7" />
-              <span className="text-mist text-center font-mono text-[0.625rem] break-all">
+              <span className="text-mist-ink text-center font-mono text-[0.625rem] break-all">
                 {name.replace('Icon', '')}
               </span>
             </li>
@@ -513,7 +515,7 @@ export default async function StyleguidePage({ params }: { params: Promise<{ loc
                 <Chip tone="muted">Phase {spec.phase}</Chip>
               </div>
               <p className="text-ink/70 mt-2 text-sm">{spec.expects}</p>
-              <p className="text-mist mt-2 font-mono text-xs">
+              <p className="text-mist-ink mt-2 font-mono text-xs">
                 {spec.where} · {spec.owner}
               </p>
             </div>
@@ -558,9 +560,9 @@ function TypeSpecimen({
 }) {
   return (
     <div className="border-ink/10 border p-6">
-      <p className="eyebrow text-mist">{role}</p>
+      <p className="eyebrow text-mist-ink">{role}</p>
       <p className={`text-ink mt-4 ${className}`}>{children}</p>
-      <p className="text-mist mt-4 font-mono text-xs">{family}</p>
+      <p className="text-mist-ink mt-4 font-mono text-xs">{family}</p>
     </div>
   )
 }

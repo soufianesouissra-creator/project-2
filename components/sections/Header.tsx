@@ -84,7 +84,10 @@ export function Header({ overHero = false }: { readonly overHero?: boolean }) {
       )}
     >
       <div className="site-container flex h-16 items-center justify-between gap-6 lg:h-20">
-        <Link href="/" aria-label={t('header.homeLabel')} className="shrink-0">
+        {/* Pas d'`aria-label` : le nom accessible du lien doit CONTENIR son
+            texte visible, et « TRANSPOLEQ, accueil » n'englobait pas
+            « Groupe ALEQ ». Le verrou typographique nomme le lien lui-même. */}
+        <Link href="/" className="shrink-0">
           <Wordmark onDark={dark} />
         </Link>
 

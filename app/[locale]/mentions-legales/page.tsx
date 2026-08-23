@@ -48,7 +48,7 @@ export default async function MentionsPage({ params }: { params: Promise<{ local
             ['Directeur de la publication', ph('DIRECTEUR_PUBLICATION')],
           ]}
         />
-        <p className="text-mist font-mono text-xs">
+        <p className="text-mist-ink font-mono text-xs">
           Les valeurs entre crochets restent à fournir. Cette page ne peut pas être publiée en l’état :
           les mentions légales d’un site marchand marocain sont opposables.
         </p>

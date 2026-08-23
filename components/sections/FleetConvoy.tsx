@@ -49,11 +49,11 @@ export function FleetConvoy() {
                 <p className="text-ink/70 mt-1.5 flex-1 text-sm">{category.use}</p>
                 <dl className="border-ink/10 mt-5 border-t pt-4 font-mono text-xs">
                   <div className="flex justify-between gap-3 py-1">
-                    <dt className="text-mist">Capacité utile</dt>
+                    <dt className="text-mist-ink">Capacité utile</dt>
                     <dd className="text-ink text-end">{category.capacity}</dd>
                   </div>
                   <div className="flex justify-between gap-3 py-1">
-                    <dt className="text-mist">En exploitation</dt>
+                    <dt className="text-mist-ink">En exploitation</dt>
                     <dd className="text-ink text-end">{category.count}</dd>
                   </div>
                 </dl>

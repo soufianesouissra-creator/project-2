@@ -65,17 +65,17 @@ export default async function SecteursPage({ params }: { params: Promise<{ local
 
                 <dl className="mt-5 flex flex-1 flex-col gap-4">
                   <div>
-                    <dt className="eyebrow text-mist">Le besoin</dt>
+                    <dt className="eyebrow text-mist-ink">Le besoin</dt>
                     <dd className="text-ink/80 mt-1.5 text-sm">{sector.need}</dd>
                   </div>
                   <div>
-                    <dt className="eyebrow text-mist">Notre réponse</dt>
+                    <dt className="eyebrow text-mist-ink">Notre réponse</dt>
                     <dd className="text-ink/80 mt-1.5 text-sm">{sector.answer}</dd>
                   </div>
                 </dl>
 
                 <div className="border-ink/10 mt-6 border-t pt-5">
-                  <p className="eyebrow text-mist">Services concernés</p>
+                  <p className="eyebrow text-mist-ink">Services concernés</p>
                   <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2">
                     {sector.services.map((slug) => {
                       const service = SERVICES.find((s) => s.slug === slug)

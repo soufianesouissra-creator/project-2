@@ -17,7 +17,7 @@ export function GroupChain() {
   const { GROUP_CHAIN, GROUP_ENTITIES } = getContent(locale)
   return (
     <section className="site-container py-16 lg:py-24" aria-labelledby="groupe">
-      <p className="eyebrow text-mist">Groupe ALEQ</p>
+      <p className="eyebrow text-mist-ink">Groupe ALEQ</p>
       <h2 id="groupe" className="font-display font-semicondensed text-ink mt-4 text-3xl font-semibold">
         Une chaîne complète, du gisement au chantier
       </h2>

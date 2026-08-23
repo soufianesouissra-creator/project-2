@@ -25,14 +25,14 @@ export function Field({ id, label, hint, error, required, children, className }:
       <label htmlFor={id} className="text-ink text-sm font-medium">
         {label}
         {required ? (
-          <span className="text-mist ms-1 font-mono text-xs" aria-hidden>
+          <span className="text-mist-ink ms-1 font-mono text-xs" aria-hidden>
             requis
           </span>
         ) : null}
       </label>
       {children}
       {hint && !error ? (
-        <p id={`${id}-hint`} className="text-mist font-mono text-xs">
+        <p id={`${id}-hint`} className="text-mist-ink font-mono text-xs">
           {hint}
         </p>
       ) : null}
@@ -46,7 +46,7 @@ export function Field({ id, label, hint, error, required, children, className }:
 }
 
 export const CONTROL_CLASSES =
-  'bg-limestone text-ink border-ink/20 rounded-control h-11 w-full border px-3 text-base transition-colors duration-150 placeholder:text-mist hover:border-ink/40 disabled:cursor-not-allowed disabled:opacity-45 aria-[invalid=true]:border-signal'
+  'bg-limestone text-ink border-ink/20 rounded-control h-11 w-full border px-3 text-base transition-colors duration-150 placeholder:text-mist-ink hover:border-ink/40 disabled:cursor-not-allowed disabled:opacity-45 aria-[invalid=true]:border-signal'
 
 /** Attributs ARIA dérivés de l'état du champ, pour ne pas les oublier. */
 export function fieldAria(id: string, options: { hint?: string; error?: string }) {

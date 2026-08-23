@@ -62,7 +62,7 @@ export default async function GroupePage({ params }: { params: Promise<{ locale:
                   <span aria-hidden className="marking-line-y flex-1" />
                 </div>
                 <div className="pb-10">
-                  <p className="text-mist font-mono text-sm break-all">{milestone.year}</p>
+                  <p className="text-mist-ink font-mono text-sm break-all">{milestone.year}</p>
                   <h3 className="font-display font-semicondensed text-ink mt-1 text-xl font-semibold">
                     {milestone.title}
                   </h3>
@@ -71,7 +71,7 @@ export default async function GroupePage({ params }: { params: Promise<{ locale:
               </li>
             ))}
           </ol>
-          <p className="text-mist max-w-[68ch] font-mono text-xs">
+          <p className="text-mist-ink max-w-[68ch] font-mono text-xs">
             Les dates restent à fournir par la direction. Une chronologie inventée est la plus facile
             à démentir et la plus coûteuse quand elle l’est.
           </p>

@@ -27,7 +27,7 @@ export function LegalLayout({
         ]}
       />
       <div className="site-container py-16 lg:py-24">
-        <p className="text-mist font-mono text-xs">Dernière mise à jour : {updated}</p>
+        <p className="text-mist-ink font-mono text-xs">Dernière mise à jour : {updated}</p>
         <div className="mt-8 flex max-w-[68ch] flex-col gap-8">{children}</div>
       </div>
     </>
@@ -54,7 +54,7 @@ export function LegalList({ rows }: { readonly rows: readonly (readonly [string,
     <dl className="divide-ink/10 border-ink/10 divide-y border-y">
       {rows.map(([label, value]) => (
         <div key={label} className="flex flex-wrap gap-x-6 gap-y-1 py-3">
-          <dt className="text-mist w-56 shrink-0 font-mono text-xs">{label}</dt>
+          <dt className="text-mist-ink w-56 shrink-0 font-mono text-xs">{label}</dt>
           <dd className="text-ink font-mono text-sm break-all">{value}</dd>
         </div>
       ))}

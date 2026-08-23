@@ -44,7 +44,7 @@ export function Turnstile({ name = 'turnstileToken' }: { readonly name?: string 
 
   if (!siteKey) {
     return (
-      <div className="text-mist font-mono text-xs" id={id}>
+      <div className="text-mist-ink font-mono text-xs" id={id}>
         Vérification anti-robot désactivée : aucune clé Turnstile configurée. Le formulaire
         fonctionne, mais il n’est protégé que par le champ piège et la limitation de débit.
       </div>

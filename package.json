@@ -17,7 +17,9 @@
     "test": "pnpm typecheck && pnpm lint && pnpm gen:content-todo",
     "test:e2e": "playwright test",
     "shots": "node scripts/screenshots.mjs",
-    "gen:content-todo": "node --experimental-strip-types --no-warnings scripts/gen-content-todo.mjs"
+    "gen:content-todo": "node --experimental-strip-types --no-warnings scripts/gen-content-todo.mjs",
+    "test:lighthouse": "node scripts/lighthouse.mjs",
+    "verify": "pnpm build && pnpm test && pnpm test:e2e"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",
@@ -33,12 +35,15 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.6",
+    "@playwright/test": "^1.62.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.10.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "chrome-launcher": "^1.2.1",
     "eslint": "^9.18.0",
     "eslint-config-next": "15.5.23",
+    "lighthouse": "^13.4.1",
     "playwright": "^1.49.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",

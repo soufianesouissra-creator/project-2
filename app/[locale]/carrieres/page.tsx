@@ -137,7 +137,7 @@ export default async function CarrieresPage({ params }: { params: Promise<{ loca
                 </li>
               ))}
             </ul>
-            <p className="text-mist mt-5 max-w-[46ch] font-mono text-xs">
+            <p className="text-mist-ink mt-5 max-w-[46ch] font-mono text-xs">
               Cette liste doit être validée par les RH avant publication : chaque ligne est un
               engagement que l’entreprise devra tenir dès le premier jour.
             </p>

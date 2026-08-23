@@ -52,7 +52,7 @@ export function Dialog({
         <button
           type="button"
           onClick={onClose}
-          className="text-mist hover:text-ink rounded-[2px] p-1 transition-colors"
+          className="text-mist-ink hover:text-ink rounded-[2px] p-1 transition-colors"
           aria-label="Fermer"
         >
           <svg viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>

@@ -162,7 +162,7 @@ export default async function ServicePage({
                 <div key={kpi.label} className="border-ink/10 border-t pt-4">
                   <dt className="text-ink/80 text-sm">{kpi.label}</dt>
                   <dd className="text-ink mt-1 font-mono text-lg break-all">{kpi.value}</dd>
-                  <p className="text-mist mt-1 font-mono text-xs">{kpi.note}</p>
+                  <dd className="text-mist-ink mt-1 font-mono text-xs">{kpi.note}</dd>
                 </div>
               ))}
             </dl>
@@ -190,7 +190,7 @@ export default async function ServicePage({
                   <h3 className="font-display font-semicondensed text-ink mt-4 text-lg font-semibold">
                     {category.name}
                   </h3>
-                  <p className="text-mist mt-2 font-mono text-xs break-all">
+                  <p className="text-mist-ink mt-2 font-mono text-xs break-all">
                     {category.capacity} · {category.count}
                   </p>
                 </li>

@@ -91,7 +91,7 @@ export default async function SuiviPage({ params }: { params: Promise<{ locale: 
             </li>
           ))}
         </ul>
-        <p className="text-mist mt-8 max-w-[68ch] font-mono text-xs">
+        <p className="text-mist-ink mt-8 max-w-[68ch] font-mono text-xs">
           Les écrans présentés sur cette page sont dessinés aux couleurs du site à partir des données
           que nous exploitons. Ce ne sont pas des captures d’un outil tiers : elles dateraient au
           premier changement d’interface et exposeraient des données clients.
@@ -101,7 +101,7 @@ export default async function SuiviPage({ params }: { params: Promise<{ locale: 
       <section className="bg-asphalt text-concrete py-16 lg:py-24" aria-labelledby="espace-client">
         <div className="site-container grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <p className="eyebrow text-mist">Bientôt</p>
+            <p className="eyebrow text-mist-ink">Bientôt</p>
             <h2
               id="espace-client"
               className="font-display font-expanded mt-4 max-w-[18ch] text-3xl font-bold lg:text-4xl"
@@ -119,7 +119,7 @@ export default async function SuiviPage({ params }: { params: Promise<{ locale: 
               <Button disabled aria-describedby="espace-client-note">
                 Bientôt disponible
               </Button>
-              <p id="espace-client-note" className="text-mist mt-3 font-mono text-xs">
+              <p id="espace-client-note" className="text-mist-ink mt-3 font-mono text-xs">
                 Cette fonctionnalité n’est pas encore ouverte.
               </p>
             </div>

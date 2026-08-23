@@ -95,17 +95,17 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
 
                   <dl className="mt-8 grid gap-6 sm:grid-cols-3">
                     <div>
-                      <dt className="eyebrow text-mist">Ce que nous transportons</dt>
+                      <dt className="eyebrow text-mist-ink">Ce que nous transportons</dt>
                       <dd className="text-ink/80 mt-2 text-sm">{service.carries.join(' · ')}</dd>
                     </div>
                     <div>
-                      <dt className="eyebrow text-mist">Matériel mobilisé</dt>
+                      <dt className="eyebrow text-mist-ink">Matériel mobilisé</dt>
                       <dd className="text-ink/80 mt-2 text-sm">
                         {service.fleet.length} catégorie{service.fleet.length > 1 ? 's' : ''} de la flotte
                       </dd>
                     </div>
                     <div>
-                      <dt className="eyebrow text-mist">Pour qui</dt>
+                      <dt className="eyebrow text-mist-ink">Pour qui</dt>
                       <dd className="text-ink/80 mt-2 text-sm">{service.forWho.join(' · ')}</dd>
                     </div>
                   </dl>

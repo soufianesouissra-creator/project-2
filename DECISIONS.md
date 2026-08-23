@@ -230,3 +230,73 @@ aucune donnée client.
 `content/fr/references.ts` est livré VIDE et les composants gèrent l'état vide avec une phrase qui
 dit pourquoi : rien n'est publié sans autorisation écrite. C'est plus crédible qu'une rangée de
 logos gris, et cela évite d'avoir à retirer un nom en urgence.
+
+---
+
+## Phase 3
+
+### 2026-08-23 · Détection automatique de langue DÉSACTIVÉE
+
+`next-intl` mémorise par défaut la langue dans un cookie et lit `Accept-Language`. Résultat mesuré
+par la suite de tests : après un passage par `/en`, l'URL `/` renvoyait de l'ANGLAIS. Or `/` est
+déclarée canonique pour le français et porte `hreflang="fr-MA"` — la même adresse servait deux
+contenus et la canonique mentait.
+
+Sans détection, une URL désigne une langue et une seule. Le changement reste explicite, par le
+sélecteur du pied de page, qui renvoie vers la MÊME page dans l'autre langue.
+
+### 2026-08-23 · Le français est canonique, l'anglais retombe dessus
+
+`lib/content.ts` fusionne le bundle anglais SUR le bundle français. Une clé qu'une traduction oublie
+rend donc du français plutôt qu'un vide. Un trou blanc sur une page est pire qu'une phrase non
+traduite : le premier passe inaperçu en relecture, la seconde saute aux yeux.
+
+### 2026-08-23 · Deux gris de métadonnée, pas un
+
+`--mist` (#8E949A) ne donne que **2,46:1** sur `--concrete` — un échec WCAG AA sur chaque légende du
+site. Le plan de conception l'annonçait à tort à « 3,1:1, réservé au texte non essentiel » ; l'audit
+a montré le contraire, et les chiffres du plan ont été corrigés.
+
+Aucune valeur unique ne peut servir les deux fonds : il faudrait être à la fois plus sombre que
+0,137 de luminance relative et plus clair que 0,227. D'où `--mist-ink` (#63686E) pour le clair —
+4,51:1 sur `--concrete`, 5,20:1 sur `--limestone` — et `--mist` conservé pour le sombre.
+
+### 2026-08-23 · Le tableau de dispatch ne s'éteint plus au montage
+
+Le brief décrit une mise en service où les lignes s'allument une par une. Implémentée telle quelle,
+elle remettait `poweredRows` à zéro APRÈS le montage : les lignes déjà peintes par le serveur
+s'éteignaient puis se rallumaient — un clignotement visible, et un LCP repoussé de trois secondes,
+parce qu'un élément à `opacity: 0` n'est pas considéré comme peint.
+
+Arbitrage : le contenu avant l'effet. Les lignes restent visibles dès le premier rendu. La vie du
+board est portée par ce qui encode réellement du transport — un statut qui avance, une mission qui
+entre. C'est un écart assumé au §4.3, pas un oubli.
+
+### 2026-08-23 · Sous-ensemble `latin` seulement
+
+Le français tient entièrement dans le latin de base ; `latin-ext` sert aux langues d'Europe centrale.
+Le charger portait les fontes à 444 ko sur le chemin critique. Avec les graisses inutilisées
+retirées (Plex Sans 600, Plex Mono 500 — les graisses lourdes du site sont TOUJOURS portées par
+Archivo), le budget tient.
+
+### 2026-08-23 · Lighthouse : `simulate` ment sur `localhost`
+
+Le modèle « lantern » de Lighthouse s'applique par-dessus une trace non bridée. Contre un serveur
+local qui répond en 8 ms, il annonçait un LCP de 3,3 s identique sur trois pages très différentes —
+un chiffre dominé par le modèle, pas par le contenu. Un vrai navigateur bridé en 4G avec CPU ÷4
+mesure **948 ms** sur la même page.
+
+`scripts/lighthouse.mjs` accepte donc `THROTTLING=devtools` (bridage réel), et le seuil de LCP n'est
+opposable que dans ce mode. Les chiffres qui comptent seront ceux du site DÉPLOYÉ.
+
+### 2026-08-23 · Le score SEO de 66 en local est notre propre `robots.txt`
+
+Le seul audit SEO en échec est `is-crawlable` : `robots.ts` interdit tout tant que
+`NEXT_PUBLIC_SITE_URL` ne pointe pas sur le domaine de production. Vérifié en reconstruisant avec
+`NEXT_PUBLIC_SITE_URL=https://transpoleq.ma` : le score passe à **92** sans autre changement.
+
+### 2026-08-23 · Mise en production NON FAITE — accès manquants
+
+Le §12 prévoit un déploiement sur `transpoleq.ma`. Il n'a pas été fait : ni compte Vercel, ni accès
+DNS, ni clés Resend, Turnstile ou Vercel Blob n'ont été fournis. Tout ce qui en dépend est prêt et
+documenté (`README.md`, section « Déploiement »), rien n'est deviné.

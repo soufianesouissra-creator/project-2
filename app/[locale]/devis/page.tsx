@@ -55,7 +55,16 @@ export default async function DevisPage({ params }: { params: Promise<{ locale: 
 
       <div className="site-container grid gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-24">
         <div className="lg:col-span-7">
-          <Suspense fallback={<p className="text-mist font-mono text-sm">Chargement du formulaire…</p>}>
+          {/* La réserve occupe la HAUTEUR du formulaire. Une ligne de texte à
+              la place faisait sauter la page de 0,176 de CLS au moment où le
+              formulaire arrivait — trois fois le budget du brief. */}
+          <Suspense
+            fallback={
+              <div className="min-h-[46rem]" role="status" aria-live="polite">
+                <p className="text-mist-ink font-mono text-sm">Chargement du formulaire…</p>
+              </div>
+            }
+          >
             <QuoteForm />
           </Suspense>
         </div>
@@ -71,7 +80,7 @@ export default async function DevisPage({ params }: { params: Promise<{ locale: 
               <li>Les contraintes d’accès du chantier.</li>
               <li>Un numéro joignable en journée.</li>
             </ul>
-            <p className="border-ink/10 text-mist mt-6 border-t pt-4 font-mono text-xs">
+            <p className="border-ink/10 text-mist-ink mt-6 border-t pt-4 font-mono text-xs">
               Urgent : {CONTACT.phone}
             </p>
           </div>

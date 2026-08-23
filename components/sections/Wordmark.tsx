@@ -23,7 +23,14 @@ export function Wordmark({ onDark = false, className }: { readonly onDark?: bool
         >
           TRANSPOLEQ
         </span>
-        <span className={cn('mt-1 font-mono text-[0.625rem] tracking-wider uppercase', onDark ? 'text-mist' : 'text-mist')}>
+        {/* La mention de groupe est de la métadonnée : elle change de gris
+            selon le fond, sinon elle tombe à 2,46:1 sur du béton clair. */}
+        <span
+          className={cn(
+            'mt-1 font-mono text-[0.625rem] tracking-wider uppercase',
+            onDark ? 'text-mist' : 'text-mist-ink',
+          )}
+        >
           Groupe ALEQ
         </span>
       </span>

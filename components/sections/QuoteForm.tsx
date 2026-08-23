@@ -250,7 +250,7 @@ export function QuoteForm() {
           </Button>
         )}
 
-        <p className="text-mist ms-auto font-mono text-xs">
+        <p className="text-mist-ink ms-auto font-mono text-xs">
           Étape {step + 1} sur {STEPS.length}
         </p>
       </div>
@@ -263,11 +263,11 @@ function QuoteSuccess({ delivered }: { readonly delivered: boolean }) {
   const { CONTACT } = getContent(locale)
   return (
     <div className="max-w-2xl" role="status">
-      <p className="eyebrow text-mist">Demande envoyée</p>
+      <p className="eyebrow text-mist-ink">Demande envoyée</p>
       <h2 className="font-display font-expanded text-ink mt-4 text-3xl font-bold">Demande envoyée.</h2>
       <span aria-hidden className="marking-line-x my-7 block w-full max-w-sm" />
       <p className="text-ink/80 text-lg">Un dispatcher vous rappelle sous {ph('DELAI_RAPPEL')}.</p>
-      <p className="text-mist mt-4 font-mono text-sm">
+      <p className="text-mist-ink mt-4 font-mono text-sm">
         Besoin d’une réponse immédiate : {CONTACT.phone}
       </p>
       {!delivered ? (

@@ -41,7 +41,7 @@ export function ApplicationForm({ positions }: { readonly positions?: readonly s
   if (state.status === 'success') {
     return (
       <div role="status" className="max-w-xl">
-        <p className="eyebrow text-mist">Candidature envoyée</p>
+        <p className="eyebrow text-mist-ink">Candidature envoyée</p>
         <h2 className="font-display font-expanded text-ink mt-4 text-2xl font-bold">
           Candidature envoyée.
         </h2>
@@ -149,7 +149,7 @@ export function ApplicationForm({ positions }: { readonly positions?: readonly s
         <Button type="submit" size="lg" disabled={pending}>
           {pending ? 'Envoi…' : 'Postuler'}
         </Button>
-        <p className="text-mist font-mono text-xs">Ou appelez le {CONTACT.phone}</p>
+        <p className="text-mist-ink font-mono text-xs">Ou appelez le {CONTACT.phone}</p>
       </div>
     </form>
   )

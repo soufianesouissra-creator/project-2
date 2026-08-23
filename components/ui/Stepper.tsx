@@ -35,7 +35,7 @@ export function Stepper({
                 <span
                   className={cn(
                     'font-mono text-xs',
-                    done || active ? 'text-ink' : 'text-mist',
+                    done || active ? 'text-ink' : 'text-mist-ink',
                   )}
                 >
                   {String(index + 1).padStart(2, '0')}
@@ -44,7 +44,7 @@ export function Stepper({
                   aria-current={active ? 'step' : undefined}
                   className={cn(
                     'text-sm',
-                    active ? 'text-ink font-medium' : done ? 'text-ink/70' : 'text-mist',
+                    active ? 'text-ink font-medium' : done ? 'text-ink/70' : 'text-mist-ink',
                   )}
                 >
                   {step}

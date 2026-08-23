@@ -57,9 +57,23 @@ composants. Décision consignée dans `DECISIONS.md`.
 2. Le sombre arrive par **bandes**, jamais en fond global. La page respire en clair entre deux bandes.
 3. `--signal` ne décore pas. S'il apparaît, quelque chose ne va pas.
 
-Contrastes vérifiés à la conception : `--ink` sur `--concrete` = 15,8:1 · `--mist` sur `--concrete` =
-3,1:1 (réservé au texte ≥ 14 px non essentiel, jamais à une information seule) · `--concrete` sur
-`--asphalt` = 13,7:1 · `--marking` sur `--asphalt` = 9,7:1.
+Contrastes **mesurés** (les valeurs annoncées au premier jet étaient fausses, et l'audit l'a montré) :
+
+| Paire | Ratio |
+|---|---|
+| `--ink` sur `--concrete` | 14,90:1 |
+| `--mist-ink` sur `--concrete` | 4,51:1 |
+| `--mist-ink` sur `--limestone` | 5,20:1 |
+| `--concrete` sur `--asphalt` | 13,56:1 |
+| `--mist` sur `--asphalt` | 5,52:1 |
+| `--marking` sur `--asphalt` | 9,45:1 |
+| `--asphalt` sur `--marking` (CTA) | 9,45:1 |
+
+**Deux gris de métadonnée, pas un.** `--mist` (#8E949A) ne donne que **2,46:1** sur `--concrete` :
+un échec AA sur chaque légende du site, que le premier jet avait annoncé à tort comme « 3,1:1,
+réservé au texte non essentiel ». Aucune valeur unique ne peut satisfaire les deux fonds — il
+faudrait être à la fois plus sombre que 0,137 de luminance et plus clair que 0,227. D'où
+`--mist-ink` (#63686E) pour le clair, `--mist` pour le sombre.
 
 ### Forme
 

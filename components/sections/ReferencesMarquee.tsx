@@ -36,7 +36,7 @@ export function ReferencesMarquee() {
             ))}
           </Marquee>
         ) : (
-          <p className="text-mist mt-6 max-w-[68ch] font-mono text-sm">
+          <p className="text-mist-ink mt-6 max-w-[68ch] font-mono text-sm">
             Aucun logo client n’est affiché : nous ne publions un nom ou une marque qu’avec une
             autorisation écrite de son titulaire. Les références chiffrées d’un chantier comparable au
             vôtre vous sont communiquées sur demande.
@@ -48,7 +48,7 @@ export function ReferencesMarquee() {
             {TESTIMONIALS.map((testimonial) => (
               <li key={testimonial.id} className="border-ink/10 border-s-2 ps-6">
                 <blockquote className="text-ink text-lg">« {testimonial.quote} »</blockquote>
-                <p className="text-mist mt-3 font-mono text-xs">
+                <p className="text-mist-ink mt-3 font-mono text-xs">
                   {testimonial.name} · {testimonial.role} · {testimonial.company}
                 </p>
               </li>

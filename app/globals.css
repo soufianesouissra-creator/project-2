@@ -14,7 +14,14 @@
   --color-limestone: #f7f6f3;
   --color-marking: #f5b800;
   --color-ink: #121315;
+  /* Métadonnée sur fond SOMBRE. 5,5:1 sur --asphalt. */
   --color-mist: #8e949a;
+  /* Métadonnée sur fond CLAIR. Aucune valeur unique ne peut tenir les deux :
+     il faut 4,5:1 contre du béton clair ET contre de l'enrobé, et les deux
+     contraintes s'excluent. --mist sur --concrete ne donnait que 2,46:1,
+     c'est-à-dire un échec AA sur toutes les légendes du site.
+     Celle-ci donne 4,51:1 sur --concrete et 5,20:1 sur --limestone. */
+  --color-mist-ink: #63686e;
   --color-signal: #c8371f;
 
   /* ── Typographie ─────────────────────────────────────────────────────── */

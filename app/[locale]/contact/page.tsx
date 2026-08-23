@@ -78,7 +78,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
               Tant que l'adresse du siège n'est pas fournie, il n'y a rien à
               placer — et une carte centrée sur le Maroc n'aide personne. */}
           <div className="bg-limestone border-ink/10 mt-10 flex aspect-[4/3] flex-col justify-end border p-4">
-            <p className="text-mist font-mono text-xs">Carte à ajouter</p>
+            <p className="text-mist-ink font-mono text-xs">Carte à ajouter</p>
             <p className="text-ink/60 mt-1 max-w-[42ch] text-sm">
               Image statique ou MapLibre, une fois l’adresse du siège fournie. Aucune dépendance à une
               clé Google Maps.
@@ -110,9 +110,9 @@ function Line({
 }) {
   return (
     <div className="flex gap-3">
-      <span className="text-mist mt-0.5 shrink-0">{icon}</span>
+      <span className="text-mist-ink mt-0.5 shrink-0">{icon}</span>
       <span>
-        <span className="eyebrow text-mist block">{label}</span>
+        <span className="eyebrow text-mist-ink block">{label}</span>
         <span className="text-ink mt-1 block">{children}</span>
       </span>
     </div>

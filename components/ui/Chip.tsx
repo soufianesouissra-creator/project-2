@@ -6,7 +6,7 @@ export type ChipTone = 'neutral' | 'active' | 'muted' | 'alert'
 const TONES: Record<ChipTone, string> = {
   neutral: 'border-ink/25 text-ink',
   active: 'border-marking text-marking',
-  muted: 'border-mist/50 text-mist',
+  muted: 'border-mist-ink/50 text-mist-ink',
   alert: 'border-signal text-signal',
 }
 

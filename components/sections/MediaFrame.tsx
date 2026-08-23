@@ -56,7 +56,7 @@ export function MediaFrame({
       role="img"
       aria-label={`Emplacement d’image : ${alt}`}
     >
-      <p className="text-mist font-mono text-xs">Photo à fournir</p>
+      <p className="text-mist-ink font-mono text-xs">Photo à fournir</p>
       <p className="text-ink/60 mt-1 font-mono text-xs break-all">{src}</p>
       <p className="text-ink/60 mt-2 max-w-[46ch] text-sm">{alt}</p>
     </div>

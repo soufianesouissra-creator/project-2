@@ -44,22 +44,32 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
   const [poweredRows, setPoweredRows] = useState(animated ? 0 : ROW_COUNT)
   const [cursor, setCursor] = useState(0)
 
-  // Mise en service : les lignes s'allument une par une. Le seul moment
-  // orchestré du site.
+  /**
+   * Mise en service : les lignes s'allument une par une.
+   *
+   * Elle ne joue QUE si le tout premier rendu était déjà silencieux — c'est-à-
+   * dire jamais en pratique, puisque `useCalmMode` démarre calme et que les
+   * lignes sont donc peintes par le serveur.
+   *
+   * Le premier jet remettait `poweredRows` à 0 après le montage : les lignes
+   * déjà affichées s'éteignaient puis se rallumaient — un clignotement visible,
+   * et un LCP repoussé de trois secondes parce qu'un élément à `opacity: 0`
+   * n'est pas considéré comme peint.
+   *
+   * On a préféré le contenu à l'effet. La vie du board reste portée par ce qui
+   * encode réellement du transport : un statut qui avance, une mission qui
+   * entre.
+   */
   useEffect(() => {
-    if (!animated) {
-      setPoweredRows(ROW_COUNT)
-      return
-    }
-    setPoweredRows(0)
-    let row = 0
+    if (poweredRows >= ROW_COUNT) return
+    let row = poweredRows
     const timer = setInterval(() => {
       row += 1
       setPoweredRows(row)
       if (row >= ROW_COUNT) clearInterval(timer)
     }, POWER_ON_STAGGER_MS)
     return () => clearInterval(timer)
-  }, [animated])
+  }, [poweredRows])
 
   // Vie du board : un statut avance, une mission entre, la plus ancienne sort.
   useEffect(() => {
@@ -118,28 +128,32 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
       </header>
 
       <div className="w-full overflow-x-auto">
-        <table className="w-full border-collapse text-start font-mono text-sm">
+        {/* Sous 24rem de panneau — un téléphone tenu à la main — le corps
+            descend d'un cran et le tonnage se replie dans la colonne trajet.
+            Sinon le STATUT, la seule colonne qui dise ce qui se passe, ne
+            s'atteint qu'en faisant défiler le tableau. */}
+        <table className="w-full border-collapse text-start font-mono text-xs @sm:text-sm">
           <caption className="sr-only">
             Missions de transport en cours — données illustratives, non contractuelles.
           </caption>
           <thead>
             <tr className="text-mist eyebrow">
-              <th scope="col" className="px-3 py-2 text-start font-normal">
+              <th scope="col" className="px-2 py-2 @sm:px-3 text-start font-normal">
                 N°
               </th>
-              <th scope="col" className="hidden px-3 py-2 text-start font-normal @xl:table-cell">
+              <th scope="col" className="hidden px-2 py-2 @sm:px-3 text-start font-normal @xl:table-cell">
                 Camion
               </th>
               <th scope="col" className="w-full px-3 py-2 text-start font-normal">
                 Trajet
               </th>
-              <th scope="col" className="hidden px-3 py-2 text-start font-normal @3xl:table-cell">
+              <th scope="col" className="hidden px-2 py-2 @sm:px-3 text-start font-normal @3xl:table-cell">
                 Matériau
               </th>
-              <th scope="col" className="px-3 py-2 text-end font-normal whitespace-nowrap">
+              <th scope="col" className="hidden px-2 py-2 @sm:px-3 text-end font-normal whitespace-nowrap @sm:table-cell">
                 Tonnage
               </th>
-              <th scope="col" className="px-3 py-2 text-start font-normal whitespace-nowrap">
+              <th scope="col" className="px-2 py-2 @sm:px-3 text-start font-normal whitespace-nowrap">
                 Statut
               </th>
             </tr>
@@ -153,8 +167,8 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
                   index < poweredRows ? 'opacity-100' : 'opacity-0',
                 )}
               >
-                <td className="text-concrete px-3 py-2.5 whitespace-nowrap">{row.id}</td>
-                <td className="text-mist hidden px-3 py-2.5 whitespace-nowrap @xl:table-cell">
+                <td className="text-concrete px-2 py-2.5 whitespace-nowrap @sm:px-3">{row.id}</td>
+                <td className="text-mist hidden px-2 py-2.5 whitespace-nowrap @sm:px-3 @xl:table-cell">
                   {row.truck}
                 </td>
                 {/* Origine et destination sur deux lignes, comme sur un vrai
@@ -162,7 +176,7 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
                     un peu long fait passer la flèche à la ligne et chaque
                     rangée prend une hauteur différente — le panneau perd la
                     densité qui fait tout son intérêt. */}
-                <td className="px-3 py-2.5">
+                <td className="px-2 py-2.5 @sm:px-3">
                   <span className="text-concrete block truncate">{row.from}</span>
                   <span className="text-concrete block truncate">
                     <span className="text-mist">→</span> {row.to}
@@ -170,18 +184,19 @@ export function DispatchBoard({ rows, incoming = [], live = false, className }: 
                   {/* Quand le panneau est trop étroit pour leur colonne, camion
                       et matériau se replient ici plutôt que de disparaître :
                       ce sont eux qui rendent la ligne crédible. */}
-                  <span className="text-mist block text-xs @3xl:hidden">
+                  <span className="text-mist block text-[0.6875rem] @3xl:hidden">
+                    <span className="@sm:hidden">{row.tonnage} · </span>
                     <span className="@xl:hidden">{row.truck} · </span>
                     {row.material}
                   </span>
                 </td>
-                <td className="text-mist hidden px-3 py-2.5 whitespace-nowrap @3xl:table-cell">
+                <td className="text-mist hidden px-2 py-2.5 whitespace-nowrap @sm:px-3 @3xl:table-cell">
                   {row.material}
                 </td>
-                <td className="text-concrete px-3 py-2.5 text-end whitespace-nowrap tabular-nums">
+                <td className="text-concrete hidden px-2 py-2.5 text-end whitespace-nowrap tabular-nums @sm:table-cell @sm:px-3">
                   {row.tonnage}
                 </td>
-                <td className="px-3 py-2.5 whitespace-nowrap">
+                <td className="px-2 py-2.5 whitespace-nowrap @sm:px-3">
                   <StatusChip row={row} />
                 </td>
               </tr>
@@ -209,7 +224,7 @@ function StatusChip({ row }: { row: DispatchRow }) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 rounded-[2px] border px-2 py-0.5 font-mono text-xs whitespace-nowrap transition-colors duration-300',
+        'inline-flex items-center gap-1.5 rounded-[2px] border px-1.5 py-0.5 font-mono text-[0.6875rem] whitespace-nowrap transition-colors duration-300 @sm:px-2 @sm:text-xs',
         done ? 'border-mist/50 text-mist' : 'border-marking text-marking',
       )}
     >

@@ -87,7 +87,7 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
               tonnage, durée, région, contraintes d’accès — avec les coordonnées d’un donneur d’ordre
               qui accepte d’être appelé.
             </p>
-            <p className="text-mist mt-5 font-mono text-sm">Demande : {CONTACT.email}</p>
+            <p className="text-mist-ink mt-5 font-mono text-sm">Demande : {CONTACT.email}</p>
           </div>
         )}
       </section>
@@ -105,7 +105,7 @@ export default async function ReferencesPage({ params }: { params: Promise<{ loc
               {TESTIMONIALS.map((testimonial) => (
                 <li key={testimonial.id} className="border-ink/10 border-s-2 ps-6">
                   <blockquote className="text-ink text-lg">« {testimonial.quote} »</blockquote>
-                  <p className="text-mist mt-3 font-mono text-xs">
+                  <p className="text-mist-ink mt-3 font-mono text-xs">
                     {testimonial.name} · {testimonial.role} · {testimonial.company}
                   </p>
                 </li>

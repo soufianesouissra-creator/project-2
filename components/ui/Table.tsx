@@ -39,7 +39,7 @@ export function Table<Row>({
                 key={column.key}
                 scope="col"
                 className={cn(
-                  'eyebrow text-mist px-4 py-3 font-normal',
+                  'eyebrow text-mist-ink px-4 py-3 font-normal',
                   column.align === 'end' ? 'text-end' : 'text-start',
                 )}
               >

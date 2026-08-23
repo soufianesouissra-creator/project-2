@@ -32,7 +32,7 @@ export function CoverageMap() {
           </h2>
           <p className="text-ink/70 mt-3 max-w-[52ch] text-lg">{COVERAGE_INTRO}</p>
 
-          <h3 className="eyebrow text-mist mt-10">Régions</h3>
+          <h3 className="eyebrow text-mist-ink mt-10">Régions</h3>
           <ul className="mt-4 flex flex-wrap gap-2">
             {confirmed.map((region) => (
               <li key={region.id}>
@@ -47,7 +47,7 @@ export function CoverageMap() {
           </ul>
 
           {confirmed.length === 0 ? (
-            <p className="text-mist mt-5 max-w-[52ch] font-mono text-xs">
+            <p className="text-mist-ink mt-5 max-w-[52ch] font-mono text-xs">
               Les régions desservies en propre et les sites d’exploitation restent à confirmer par
               l’exploitation. Aucune n’est présentée comme couverte tant qu’elle ne l’est pas.
             </p>
@@ -110,7 +110,7 @@ function MoroccoDiagram() {
           <circle cx="66" cy="358" r="6" />
         </g>
       </svg>
-      <figcaption className="text-mist mt-4 text-center font-mono text-xs">
+      <figcaption className="text-mist-ink mt-4 text-center font-mono text-xs">
         Silhouette indicative. Les sites d’exploitation seront nommés et replacés une fois la liste
         fournie ({'['}HUBS{']'}).
       </figcaption>

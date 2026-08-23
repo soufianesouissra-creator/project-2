@@ -46,7 +46,7 @@ export function MissionProcess({
               {/* La ligne de marquage porte la séquence : elle continue d'une
                   étape à l'autre plutôt que d'encadrer chacune. */}
               <span aria-hidden className="marking-line-x mb-6 block w-full" />
-              <span className="text-mist font-mono text-sm">{String(step.n).padStart(2, '0')}</span>
+              <span className="text-mist-ink font-mono text-sm">{String(step.n).padStart(2, '0')}</span>
               <h3 className="font-display font-semicondensed text-ink mt-2 text-xl font-semibold">
                 {step.title}
               </h3>

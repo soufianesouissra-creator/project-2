@@ -7,7 +7,7 @@ export default async function NotFound() {
 
   return (
     <section className="site-container flex min-h-[70svh] flex-col justify-center py-32">
-      <p className="eyebrow text-mist">Erreur 404</p>
+      <p className="eyebrow text-mist-ink">Erreur 404</p>
       <h1 className="font-display font-expanded text-ink mt-4 max-w-[16ch] text-4xl font-bold lg:text-5xl">
         {t('notFound.title')}
       </h1>

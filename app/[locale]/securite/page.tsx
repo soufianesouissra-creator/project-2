@@ -104,7 +104,7 @@ export default async function SecuritePage({ params }: { params: Promise<{ local
                 {CERTIFICATIONS.map((certification) => (
                   <li key={certification.name} className="border-ink/10 border-t pt-4">
                     <p className="text-ink font-medium">{certification.name}</p>
-                    <p className="text-mist mt-1 font-mono text-xs">
+                    <p className="text-mist-ink mt-1 font-mono text-xs">
                       {certification.body} · valide jusqu’au {certification.validUntil}
                     </p>
                   </li>
@@ -123,12 +123,12 @@ export default async function SecuritePage({ params }: { params: Promise<{ local
             <ul className="mt-6 flex flex-col gap-3">
               {AVAILABLE_DOCUMENTS.map((document) => (
                 <li key={document} className="text-ink/85 flex items-start gap-3 text-sm">
-                  <IconDocument className="text-mist mt-0.5 size-4 shrink-0" />
+                  <IconDocument className="text-mist-ink mt-0.5 size-4 shrink-0" />
                   {document}
                 </li>
               ))}
             </ul>
-            <p className="text-mist mt-6 font-mono text-xs">Demande : {CONTACT.email}</p>
+            <p className="text-mist-ink mt-6 font-mono text-xs">Demande : {CONTACT.email}</p>
           </div>
         </div>
       </section>

@@ -59,7 +59,7 @@ export function FleetGrid() {
       </div>
 
       {visible.length === 0 ? (
-        <p className="text-mist mt-10 font-mono text-sm">
+        <p className="text-mist-ink mt-10 font-mono text-sm">
           Aucune catégorie ne correspond à ce filtre.
         </p>
       ) : (
@@ -78,11 +78,11 @@ export function FleetGrid() {
 
                 <dl className="border-ink/10 mt-5 border-t pt-4 font-mono text-xs">
                   <div className="flex justify-between gap-3 py-1">
-                    <dt className="text-mist">Capacité utile</dt>
+                    <dt className="text-mist-ink">Capacité utile</dt>
                     <dd className="text-ink text-end break-all">{category.capacity}</dd>
                   </div>
                   <div className="flex justify-between gap-3 py-1">
-                    <dt className="text-mist">En exploitation</dt>
+                    <dt className="text-mist-ink">En exploitation</dt>
                     <dd className="text-ink text-end break-all">{category.count}</dd>
                   </div>
                 </dl>
