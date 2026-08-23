@@ -1,45 +1,67 @@
 import type { Metadata } from 'next'
 import { setRequestLocale } from 'next-intl/server'
-import { ButtonLink } from '@/components/ui/Button'
-import { MarkingLine } from '@/components/motion/MarkingLine'
+import { hasLocale } from 'next-intl'
+import { notFound } from 'next/navigation'
 
-export const metadata: Metadata = {
-  title: 'Fondations',
-  robots: { index: false, follow: false },
+import { Hero } from '@/components/sections/Hero'
+import { KeyFigures } from '@/components/sections/KeyFigures'
+import { ServicesGrid } from '@/components/sections/ServicesGrid'
+import { MissionProcess } from '@/components/sections/MissionProcess'
+import { FleetConvoy } from '@/components/sections/FleetConvoy'
+import { TrackingBand } from '@/components/sections/TrackingBand'
+import { GroupChain } from '@/components/sections/GroupChain'
+import { ReferencesMarquee } from '@/components/sections/ReferencesMarquee'
+import { CoverageMap } from '@/components/sections/CoverageMap'
+import { CareersBand } from '@/components/sections/CareersBand'
+import { QuoteBand } from '@/components/sections/QuoteBand'
+import { JsonLd } from '@/components/JsonLd'
+import { organizationSchema } from '@/lib/schema'
+import { pageMetadata } from '@/lib/seo'
+import { routing } from '@/lib/routing'
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
+  return pageMetadata({
+    locale,
+    path: '/',
+    title: 'Transport et logistique de chantier au Maroc',
+    description:
+      'TRANSPOLEQ transporte matériaux, enrobés et engins pour les chantiers d’infrastructure au Maroc. Flotte suivie en temps réel, rotations planifiées, livraisons tracées.',
+  })
 }
 
 /**
- * Page d'attente de la Phase 0.
+ * Accueil (§6.1) — onze sections, dans l'ordre du brief.
  *
- * L'accueil réel (§6.1) est construit en Phase 1, après validation du
- * styleguide. Mettre ici une ébauche de hero donnerait à valider une page qui
- * n'a pas été conçue — c'est exactement ce que la porte de phase existe pour
- * éviter.
+ * Le rythme alterne béton et enrobé : hero sombre, quatre sections claires,
+ * bande de suivi sombre, trois sections claires, bande devis sombre, pied de
+ * page sombre. Le sombre reste minoritaire — c'est ce qui l'empêche de virer
+ * au « presque-noir partout » que le brief rejette.
  */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  if (!hasLocale(routing.locales, locale)) notFound()
   setRequestLocale(locale)
 
   return (
-    <section className="bg-asphalt text-concrete flex min-h-dvh items-center">
-      <div className="site-container py-32">
-        <p className="eyebrow text-mist">Phase 0 · Fondations</p>
-        <h1 className="font-display font-expanded mt-5 max-w-[18ch] text-4xl font-bold lg:text-6xl">
-          Le système avant les pages.
-        </h1>
-        <MarkingLine className="my-9 max-w-lg" />
-        <p className="text-concrete/80 max-w-[62ch] text-lg">
-          Jetons, fontes, grille, en-tête, pied de page, primitives de mouvement et tableau de
-          dispatch sont livrés. L’accueil et les pages de service se construisent en Phase 1, une fois
-          le système validé.
-        </p>
-        <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href="/styleguide">Voir le styleguide</ButtonLink>
-          <ButtonLink href="/styleguide#board" variant="ghost-dark">
-            Voir le tableau de dispatch
-          </ButtonLink>
-        </div>
-      </div>
-    </section>
+    <>
+      <JsonLd data={organizationSchema()} />
+      <Hero />
+      <KeyFigures />
+      <ServicesGrid />
+      <MissionProcess intro="De la demande à la preuve de livraison, cinq étapes, toujours les mêmes." />
+      <FleetConvoy />
+      <TrackingBand />
+      <GroupChain />
+      <ReferencesMarquee />
+      <CoverageMap />
+      <CareersBand />
+      <QuoteBand />
+    </>
   )
 }
